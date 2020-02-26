@@ -1,18 +1,39 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <Login v-if="!isLoggedIn"/>
+      <LogOut v-if="isLoggedIn"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+ import Login from "../components/Login"
+ import LogOut from "../components/LogOut"
+ import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
-  }
+    Login,
+    LogOut
+  },
+  methods: {
+    ...mapActions(['getUser']),
+    ...mapMutations(['toggleLogin']),
+    checkLoggedin(){
+      localStorage.token
+      ? 
+      this.toggleLogin()
+      :
+      null
+      }
+    },
+   computed: mapGetters(['isLoggedIn', 'user']),
+   mounted() {
+     this.getUser(localStorage.getItem('token'))
+     this.checkLoggedin()
+   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>
