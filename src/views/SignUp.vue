@@ -26,11 +26,7 @@ export default {
         }
     },
     methods: {      
-        ...mapMutations(['toggleLogin']),
-      redirect(){
-           this.toggleLogin()
-            this.$router.push('/')
-      },
+    ...mapMutations(['toggleLogin']),
       handleSubmit(event){
         event.preventDefault();
         fetch('http://localhost:9001/users', {
@@ -42,7 +38,8 @@ export default {
         })
         .then(res => res.json())
         .then(res=> localStorage.setItem('token', res.token))
-        .then(this.redirect)
+        .then(this.toggleLogin)
+        .then(this.$router.push('/'))
       }
 
     }
