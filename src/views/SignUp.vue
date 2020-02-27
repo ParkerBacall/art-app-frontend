@@ -1,7 +1,12 @@
 <template>
   <div id='sign-up-panel-container'>
     <div id='sign-up-panel'>
-        <h1>sign up</h1>
+        <router-link to="/"> 
+            <div id='backbtn' class="fas fa-chevron-circle-left"/>
+        </router-link>
+      <div id=header-div>
+          <h1>sign up</h1>
+      </div>
         <form @submit="handleSubmit">
         <input v-model="user.full_name" type="text" placeholder="Full Name">
         <input v-model="user.email" type="text" placeholder="E-mail">
@@ -26,7 +31,13 @@ export default {
         }
     },
     methods: {      
-    ...mapMutations(['toggleLogin']),
+    ...mapMutations(['toggleLogin','getUser', 'toggleHideLogin']),
+      LoginFunctions(token){
+        this.$router.push('/')
+        this.toggleHideLogin()
+        localStorage.setItem("token", token)
+        this.getUser(token)
+      },
       handleSubmit(event){
         event.preventDefault();
         fetch('http://localhost:9001/users', {
@@ -37,9 +48,7 @@ export default {
             body: JSON.stringify(this.user)
         })
         .then(res => res.json())
-        .then(res=> localStorage.setItem('token', res.token))
-        .then(this.toggleLogin)
-        .then(this.$router.push('/'))
+        .then(res=> this.LoginFunctions(res.token))
       }
 
     }
@@ -57,6 +66,16 @@ export default {
         width: 50%;
         box-shadow: 0px 0px 5px #666;
         padding: 10px;
+        #backbtn{
+          position: absolute;
+          padding-right: 680px;
+          font-size: 25px;
+        }
+        #header-div{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
         input{
           width: 100%;
           height: 45px;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="log-out-div">
         <button @click="handleClick">Log out</button>
     </div>
 </template>
@@ -9,15 +9,19 @@ import {mapMutations} from 'vuex'
 export default {
     name: "LogOut",
     methods: {
-        ...mapMutations(['toggleLogin']),
+        ...mapMutations(['toggleLogin', 'toggleHideLogin', 'clearUser']),
         handleClick(){
             localStorage.removeItem('token')
             this.toggleLogin()
+            this.toggleHideLogin()
+            this.clearUser()
         }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-
+    #log-out-div{
+    
+    }
 </style>

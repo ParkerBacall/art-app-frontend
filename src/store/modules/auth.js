@@ -1,11 +1,13 @@
 const state={
+    hideLogin: true,
     isLoggedIn: false,
     user: {}
 }
 
 const getters={
     isLoggedIn: (state) => state.isLoggedIn,
-    user: (state) => state.user
+    user: (state) => state.user,
+    hideLogin: (state) => state.hideLogin
 }
 
 const actions={
@@ -25,7 +27,9 @@ const actions={
 
 const mutations={
     toggleLogin: (state) => state.isLoggedIn = !state.isLoggedIn,
-    loggedInUser: (state, user) => state.user = user
+    loggedInUser: (state, user) => state.user = user,
+    toggleHideLogin: (state) => state.hideLogin = !state.hideLogin,
+    clearUser: (state) => state.user = {}
 }
 
 

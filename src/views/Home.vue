@@ -1,27 +1,34 @@
 <template>
   <div class="home">
+      <Header/>
       <Login v-if="!isLoggedIn"/>
-      <LogOut v-if="isLoggedIn"/>
+      <Title/>
   </div>
 </template>
 
 <script>
  import Login from "../components/Login"
- import LogOut from "../components/LogOut"
+ import Header from "../components/Header"
+ import Title from "../components/Title"
  import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
   name: 'Home',
   components: {
     Login,
-    LogOut
+    Header,
+    Title
   },
   methods: {
     ...mapActions(['getUser']),
-    ...mapMutations(['toggleLogin']),
+    ...mapMutations(['toggleLogin', 'toggleHideLogin']),
+    toggleBaseState(){
+      this.toggleLogin()
+      this.toggleHideLogin()
+    },
     checkLoggedin(){
       localStorage.token
-      ? 
-      this.toggleLogin()
+      ?
+      this.toggleBaseState()
       :
       null
       }
