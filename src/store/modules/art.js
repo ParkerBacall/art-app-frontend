@@ -1,5 +1,5 @@
 const state= {
-    artworks:[]
+    artworks:[],
 }
 
 const getters={
@@ -8,7 +8,7 @@ const getters={
 
 const actions = {
     fetchArt({commit}){
-        fetch('http://localhost:9001/art')
+        fetch('http://localhost:9001/genes')
         .then(res =>  res.json())
         .then(artworks => commit('addArtworks', artworks))
     }
