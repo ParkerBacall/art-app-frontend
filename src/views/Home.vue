@@ -2,8 +2,8 @@
   <div class="home">
       <Header/>
       <Login v-if="!isLoggedIn"/>
-      <Title/>
-      <InfluencesGrid/>
+      <Title v-if="isLoggedIn"/>
+      <InfluencesGrid v-if="isLoggedIn"/>
   </div>
 </template>
 

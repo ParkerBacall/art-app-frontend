@@ -26,4 +26,10 @@ export default {
     #log-out-div{
         padding-right: 35px;
     }
+
+    #log-out-div:hover{
+            color: #333;
+            cursor: pointer;
+    }
+
 </style>

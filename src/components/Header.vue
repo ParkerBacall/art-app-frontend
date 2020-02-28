@@ -1,8 +1,8 @@
 <template>
     <div class="sticky" id="header-div">
         <h1>Cool Art App</h1>
-            <div v-if="hideLogin" @click="toggleHideLogin" >
-                <h1>Log in</h1>
+            <div id="login-header" v-if="hideLogin" @click="toggleHideLogin" >
+                <h1>Login</h1>
             </div>
             <LogOut v-if="isLoggedIn"/>
     </div>
@@ -33,6 +33,10 @@ export default {
         background-color: cadetblue;
         display: flex;
         justify-content: space-between;
+        #login-header:hover{
+            color: #333;
+            cursor: pointer;
+        }
     }
 
 
