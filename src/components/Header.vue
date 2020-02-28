@@ -1,7 +1,9 @@
 <template>
     <div class="sticky" id="header-div">
         <h1>Cool Art App</h1>
-            <button v-if="hideLogin" @click="toggleHideLogin" >login</button>
+            <div v-if="hideLogin" @click="toggleHideLogin" >
+                <h1>Log in</h1>
+            </div>
             <LogOut v-if="isLoggedIn"/>
     </div>
     

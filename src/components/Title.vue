@@ -1,6 +1,6 @@
 <template>
     <div id='title'>
-        <h1>{{user.full_name}}</h1>
+        <h2> Hello {{user.full_name}}, please select your influences</h2>
     </div>
 </template>
 
@@ -14,6 +14,8 @@ export default {
 
 <style lang="scss" scoped>
     #title{
-        padding-top: 130px;
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
     }
 </style>

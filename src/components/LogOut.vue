@@ -1,6 +1,8 @@
 <template>
     <div id="log-out-div">
-        <button @click="handleClick">Log out</button>
+        <div @click="handleClick">
+            <h1>Log out</h1>
+        </div>
     </div>
 </template>
 
@@ -22,6 +24,6 @@ export default {
 
 <style lang="scss" scoped>
     #log-out-div{
-    
+        padding-right: 35px;
     }
 </style>

@@ -3,12 +3,14 @@
       <Header/>
       <Login v-if="!isLoggedIn"/>
       <Title/>
+      <InfluencesGrid/>
   </div>
 </template>
 
 <script>
  import Login from "../components/Login"
  import Header from "../components/Header"
+ import InfluencesGrid from '../components/InfluencesGrid'
  import Title from "../components/Title"
  import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
@@ -16,6 +18,7 @@ export default {
   components: {
     Login,
     Header,
+    InfluencesGrid,
     Title
   },
   methods: {
