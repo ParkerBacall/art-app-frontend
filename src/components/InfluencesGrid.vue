@@ -1,11 +1,15 @@
 <template>
     <div>
+        <FilterCount />
         <div id='artwork-grid'>
-        <div @click="handleClick" id='artwork' v-for="artwork in artworks" :key="artwork.id">
-            <img :src = "artwork._links.thumbnail.href"/>
+        <div @click="handleClick(selectedGenes, gene)" 
+        :id="selectedGenes.includes(gene) ? 'selected' : 'artwork'" 
+        v-for="gene in genes" 
+        :key="gene.id">
+            <img :src = "gene._links.thumbnail.href"/>
             <div id="h3-div">
             <h3>
-            {{artwork.name}}
+            {{gene.name}}
             </h3>
             </div>
         </div>
@@ -14,18 +18,27 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
+import FilterCount from './FilterCount'
 export default {
     name: 'InfluencesGrid',
+    components: {
+        FilterCount
+},
     methods: {
-        ...mapActions(['fetchArt']),
-        handleClick(e){
-            console.log(e.target.id)
+        ...mapActions(['fetchGenes']),
+        ...mapMutations(['addSelectedGene', 'removeSelectedGene']),
+        handleClick(selectedGenes, gene){
+           if (!selectedGenes.includes(gene)){
+                this.addSelectedGene(gene)
+           } else{
+               this.removeSelectedGene(gene)
+           }
         }
     }, 
-    computed: mapGetters(['artworks']),
+    computed: mapGetters(['genes', 'selectedGenes']),
     mounted(){
-        this.fetchArt()
+        this.fetchGenes(70)
     }
 }
 </script>
@@ -38,10 +51,11 @@ export default {
         flex-wrap: wrap;
 
         #selected{
-             width:20%;
+            width:20%;
             height:20%;
-            padding: 20px;
+            padding: 10px;
             margin: 10px;
+            background-color: #666;
             box-shadow: 0px 0px 4px #666
         }
         #artwork{
