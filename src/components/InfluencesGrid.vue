@@ -1,5 +1,6 @@
 <template>
     <div>
+    <Nav/>
         <FilterCount />
         <div id='artwork-grid'>
         <div @click="handleClick(selectedGenes, gene)" 
@@ -13,7 +14,7 @@
             </h3>
             </div>
             <div id='link-div'>
-             <router-link :to="{ name: 'Read', params: {gene: gene, id: gene.name}}"> See more </router-link>
+             <router-link :to="{ name: 'Read', params: {gene: gene, id: gene.name}}"> About Genre </router-link>
              </div>
         </div>
         </div>
@@ -23,10 +24,12 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
 import FilterCount from './FilterCount'
+import Nav from './Nav'
 export default {
     name: 'InfluencesGrid',
     components: {
-        FilterCount
+        FilterCount,
+        Nav
 },
     methods: {
         ...mapActions(['fetchGenes']),

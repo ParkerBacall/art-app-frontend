@@ -1,6 +1,7 @@
 <template>
     <div class="sticky" id="header-div">
         <h1>Cool Art App</h1>
+            <Title v-if="isLoggedIn"/>
             <div id="login-header" v-if="hideLogin" @click="toggleHideLogin" >
                 <h1>Login</h1>
             </div>
@@ -12,10 +13,12 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 import LogOut from './LogOut'
+import Title from './Title'
 export default {
     name: "Header",
     components: {
-        LogOut
+        LogOut,
+        Title
     },
     methods: mapMutations(["toggleHideLogin"]), 
     computed: mapGetters(['hideLogin', 'isLoggedIn']),

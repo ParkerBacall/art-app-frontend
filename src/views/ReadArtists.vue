@@ -9,7 +9,6 @@
             <h3>
             {{gene.name}}
             </h3>
-             <router-link :to="{ name: 'ReadArtists', params: {gene: gene, id: gene.name}}"> About Arist </router-link>
         </div>
         </div>
     </div>
@@ -19,7 +18,7 @@
 import Header from '../components/Header'
 import {mapMutations, mapGetters} from 'vuex'
 export default {
-    name: 'Read',
+    name: 'ReadArtists',
     props: ["gene", "id"],
     components: {
         Header
@@ -32,8 +31,8 @@ export default {
         },
         computed: mapGetters(['genes']),
     mounted(){
-        console.log(this.$route.params.gene)
-        fetch(this.$route.params.gene._links.artists.href, {
+        console.log(this.$route.params.gene._links.artworks.href)
+        fetch(this.$route.params.gene._links.artworks.href, {
              method: 'GET',
             headers: {
               'X-Xapp-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI1ZTU4NDFmOGViOWE2ODAwMTIwODJhZjQiLCJleHAiOjE1ODM0NDk2NzQsImlhdCI6MTU4Mjg0NDg3NCwiYXVkIjoiNWU1ODQxZjhlYjlhNjgwMDEyMDgyYWY0IiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjVlNTg0YmNhY2E3N2E2MDAxMjdjM2MyMCJ9.Hup__6PY57_H_S9A6mkl4_11Ll60japGzKl9tG4wbfg',
@@ -41,7 +40,8 @@ export default {
             }
           })
           .then(response => response.json())
-          .then(res => this.addGenes(res._embedded.artists))
+        //   .then(res => this.addGenes(res._embedded.artworks))
+          .then(console.log)
     }
 }
 </script>

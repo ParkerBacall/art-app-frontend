@@ -14,7 +14,6 @@ export default {
 
 <style lang="scss" scoped>
     #title{
-        padding-top: 100px;
         display: flex;
         justify-content: center;
     }

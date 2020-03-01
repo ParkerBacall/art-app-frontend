@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import SignUp from '../views/SignUp'
 import Home from '../views/Home'
 import Read from '../views/Read'
+import ReadArtists from '../views/ReadArtists'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/read/:id',
     name: 'Read',
     component: Read
+  },
+  {
+    path: '/artists/:id',
+    name: 'ReadArtists',
+    component: ReadArtists
   }
 ]
 
