@@ -12,6 +12,9 @@
             {{gene.name}}
             </h3>
             </div>
+            <div id='link-div'>
+             <router-link :to="{ name: 'Read', params: {gene: gene, id: gene.name}}"> See more </router-link>
+             </div>
         </div>
         </div>
     </div>
@@ -76,6 +79,10 @@ export default {
                 h3{
                     text-align: center;
                 }
+            }
+            #link-div{
+                display: flex;
+                justify-content: center;
             }
         }
         #artwork:hover{
