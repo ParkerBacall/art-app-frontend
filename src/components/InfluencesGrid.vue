@@ -33,7 +33,7 @@ export default {
 },
     methods: {
         ...mapActions(['fetchGenes']),
-        ...mapMutations(['addSelectedGene', 'removeSelectedGene']),
+        ...mapMutations(['addSelectedGene', 'removeSelectedGene', 'setSelectedGenes']),
         handleClick(selectedGenes, gene, user){
            if (!selectedGenes.includes(gene)){
                 this.addSelectedGene(gene)
@@ -59,7 +59,7 @@ export default {
     computed: mapGetters(['genes', 'selectedGenes', 'user', 'user_genes']),
     mounted(){
         this.fetchGenes(70)
-    }
+    },
 }
 </script>
 

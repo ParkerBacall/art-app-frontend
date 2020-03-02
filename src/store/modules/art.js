@@ -42,6 +42,7 @@ const actions = {
 const mutations= {
     addGenes: (state, genes) => state.genes = genes,
     addSelectedGene: (state, selectedGene) =>  state.selectedGenes.unshift(selectedGene),
+    setSelectedGenes: (state, genes) => state.selectedGenes = genes,
     removeSelectedGene: (state, gene) => state.selectedGenes = state.selectedGenes.filter(selectedGene => gene.id !== selectedGene.id)
 }
 

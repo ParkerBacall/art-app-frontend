@@ -26,13 +26,18 @@ export default {
         },
         methods:{
             ...mapMutations(['addGenes']),
+             ...mapMutations(['setSelectedGenes','toggleLogin', 'toggleHideLogin']),
+            toggleBaseState(){
+            this.toggleLogin()
+            this.toggleHideLogin()
+            },
             logInfo(gene){
                 console.log(gene._links.artworks)
             }
         },
         computed: mapGetters(['genes']),
     mounted(){
-        console.log(this.$route.params.gene)
+        // this.toggleBaseState(),
         fetch(this.$route.params.gene._links.artists.href, {
              method: 'GET',
             headers: {

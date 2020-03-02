@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     ...mapActions(['getUser']),
-    ...mapMutations(['toggleLogin', 'toggleHideLogin']),
+    ...mapMutations(['toggleLogin', 'toggleHideLogin', 'setSelectedGenes']),
     toggleBaseState(){
       this.toggleLogin()
       this.toggleHideLogin()
@@ -36,8 +36,8 @@ export default {
     },
    computed: mapGetters(['isLoggedIn', 'user']),
    mounted() {
+     this.checkLoggedin(),
      this.getUser(localStorage.getItem('token'))
-     this.checkLoggedin()
    }
 }
 </script>
