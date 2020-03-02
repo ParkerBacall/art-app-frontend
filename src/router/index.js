@@ -4,6 +4,7 @@ import SignUp from '../views/SignUp'
 import Home from '../views/Home'
 import Read from '../views/Read'
 import ReadArtists from '../views/ReadArtists'
+import Explore from '../views/Explore'
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/sign-up',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: '/explore',
+    name: 'Explore',
+    component: Explore
   },
   {
     path: '/read/:id',

@@ -3,7 +3,7 @@
     <Nav/>
         <FilterCount />
         <div id='artwork-grid'>
-        <div @click="handleClick(selectedGenes, gene)" 
+        <div @click="handleClick(selectedGenes, gene, user)" 
         :id="selectedGenes.includes(gene) ? 'selected' : 'artwork'" 
         v-for="gene in genes" 
         :key="gene.id">
@@ -34,15 +34,29 @@ export default {
     methods: {
         ...mapActions(['fetchGenes']),
         ...mapMutations(['addSelectedGene', 'removeSelectedGene']),
-        handleClick(selectedGenes, gene){
+        handleClick(selectedGenes, gene, user){
            if (!selectedGenes.includes(gene)){
                 this.addSelectedGene(gene)
+                fetch('http://localhost:9001/genres',{
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify ({
+                        name: gene.name, 
+                        artworks: gene._links.artworks.href,
+                        artists: gene._links.artists.href,
+                        user_id: user.id
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(console.log)
            } else{
                this.removeSelectedGene(gene)
            }
         }
     }, 
-    computed: mapGetters(['genes', 'selectedGenes']),
+    computed: mapGetters(['genes', 'selectedGenes', 'user', 'user_genes']),
     mounted(){
         this.fetchGenes(70)
     }

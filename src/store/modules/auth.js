@@ -1,13 +1,13 @@
 const state={
     hideLogin: true,
     isLoggedIn: false,
-    user: {}
+    user: {},
 }
 
 const getters={
     isLoggedIn: (state) => state.isLoggedIn,
     user: (state) => state.user,
-    hideLogin: (state) => state.hideLogin
+    hideLogin: (state) => state.hideLogin,
 }
 
 const actions={
@@ -22,6 +22,7 @@ const actions={
         .then(res => res.json())
         .then(user => commit('loggedInUser', user))
     },
+   
 
 }
 

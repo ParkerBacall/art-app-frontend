@@ -1,7 +1,7 @@
 <template>
     <div id='nav-div'>
              <router-link to="/read"> Artists </router-link>
-             <router-link to="/read"> Explore </router-link>
+             <router-link to="/explore"> Explore </router-link>
     </div>
 </template>
 

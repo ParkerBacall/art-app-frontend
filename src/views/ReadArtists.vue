@@ -31,7 +31,7 @@ export default {
         },
         computed: mapGetters(['genes']),
     mounted(){
-        console.log(this.$route.params.gene._links.artworks.href)
+        console.log(this.$route.params.gene)
         fetch(this.$route.params.gene._links.artworks.href, {
              method: 'GET',
             headers: {
