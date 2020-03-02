@@ -36,6 +36,7 @@ export default {
         background-color: cadetblue;
         display: flex;
         justify-content: space-between;
+        box-shadow: 0px 0px 4px #666; 
         #login-header:hover{
             color: #333;
             cursor: pointer;

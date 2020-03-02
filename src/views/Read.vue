@@ -2,7 +2,7 @@
     <div>
         <Header/>
        <h1> {{$route.params.gene.name}}</h1>
-        {{$route.params.gene.description}}
+        <p>{{$route.params.gene.description}}</p>
         <div id="artists">
         <div @click="logInfo(gene)" v-for="gene in genes" :key="gene.id" id ="artist">
             <img :src = "gene._links.thumbnail.href"/>
@@ -30,9 +30,6 @@ export default {
             toggleBaseState(){
             this.toggleLogin()
             this.toggleHideLogin()
-            },
-            logInfo(gene){
-                console.log(gene._links.artworks)
             }
         },
         computed: mapGetters(['genes']),
@@ -54,6 +51,9 @@ export default {
 <style lang="scss" scoped>
     h1{
         padding-top: 80px;
+    }
+    p{
+        padding: 10px;
     }
     #artists{
             display: flex;
