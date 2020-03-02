@@ -1,7 +1,10 @@
 <template>
     <div id='login-panel-container'>
     <div :id = "hideLogin ? 'hide' : 'login-panel'">
-        <div @click="toggleHideLogin" id="close" class="fas fa-times-circle"></div>
+        <div  id="close">
+        <div @click="toggleHideLogin" class="fas fa-times-circle">
+         </div>
+         </div>
         <h1>login</h1>
         <form @submit='handleSubmit'>
         <input v-model="user.email" type="text" placeholder="E-mail">
@@ -57,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-   
+  
     #hide{
         display: flex;
         opacity: 0;
@@ -75,6 +78,7 @@ export default {
         position: static;
         padding-left: 210px;
     }
+    
 
     h1{
         margin-top: 0px;
@@ -116,6 +120,9 @@ export default {
         color: red;
         position: static;
         padding-left: 210px;
+    }
+    .fa-times-circle:hover{
+        color: black;
     }
 
     h1{

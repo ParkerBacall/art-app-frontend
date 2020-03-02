@@ -1,9 +1,11 @@
 <template>
   <div id='sign-up-panel-container'>
     <div id='sign-up-panel'>
-        <router-link to="/"> 
-            <div id='backbtn' class="fas fa-chevron-circle-left"/>
-        </router-link>
+       
+            <div id='backbtn'>
+               <router-link class="fas fa-chevron-circle-left" to="/"> 
+              </router-link>
+            </div>
       <div id=header-div>
           <h1>sign up</h1>
       </div>
@@ -56,6 +58,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.fa-chevron-circle-left:hover{
+  color: black
+}
+fa-chevron-circle-left{
+
+}
+a {  
+  text-decoration: none
+  }
+a:hover{
+
+}
     #sign-up-panel-container{
       display: flex;
       justify-content: center;
