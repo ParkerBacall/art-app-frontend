@@ -2,7 +2,7 @@
   <div id='sign-up-panel-container'>
     <div id='sign-up-panel'>
             <div id='backbtn'>
-               <div class="fas fa-chevron-circle-left" /> 
+               <div @click="handleClick" class="fas fa-times-circle" /> 
             </div>
       <div id=header-div>
           <h1>sign up</h1>
@@ -31,15 +31,20 @@ export default {
         }
     },
     methods: {      
-    ...mapMutations(['toggleLogin','getUser', 'toggleHideLogin']),
+    ...mapMutations(['toggleLogin','getUser', 'toggleHideLogin','toggleHideSignUp']),
       LoginFunctions(token){
-        this.$router.push('/')
-        this.toggleHideLogin()
-        localStorage.setItem("token", token)
         this.getUser(token)
+        localStorage.setItem("token", token)
+        this.toggleLogin()
+        this.toggleHideLogin()
+        this.toggleHideSignUp()
+      },
+      handleClick(){
+        this.toggleHideSignUp()
       },
       handleSubmit(event){
-        event.preventDefault();
+        event.preventDefault()
+        this.$router.push('/genres')
         fetch('http://localhost:9001/users', {
             method: 'POST',
             headers: {
@@ -55,6 +60,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    #backbtn{
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+       font-size: 25px;
+    }
+     .fa-times-circle{
+        color: red;
+    }
+    .fa-times-circle:hover{
+        color: black;
+    }
+
     #sign-up-panel-container{
       position: absolute;
       display: flex;
@@ -69,7 +87,7 @@ export default {
         width: 900px;
         box-shadow: 0px 0px 5px #666;
         padding: 10px;
-        background-color: #999;
+        background-color: white;
         #header-div{
           width: 100%;
           display: flex;

@@ -2,8 +2,8 @@
     <div class="sticky" id="header-div">
         <h1>Cool Art App</h1>
             <Title v-if="isLoggedIn"/>
-            <div id="login-header" v-if="hideLogin" @click="toggleHideLogin" >
-                <h1>Login</h1>
+            <div id="login-header" v-if="hideLogin && !isLoggedIn" @click="toggleHideLogin" >
+                <h1 >Login</h1>
             </div>
             <LogOut v-if="isLoggedIn"/>
     </div>

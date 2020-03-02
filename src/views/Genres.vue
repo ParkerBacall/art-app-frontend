@@ -1,5 +1,6 @@
 <template>
     <div>
+        ddsadsa
     <Nav/>
         <FilterCount />
         <div id='artwork-grid'>

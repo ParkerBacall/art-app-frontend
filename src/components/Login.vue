@@ -40,6 +40,7 @@ export default {
       },
       handleSubmit(event){
         event.preventDefault()
+        this.$router.push('/genres')
         fetch('http://localhost:9001/login', {
             method: 'POST',
             headers: {
