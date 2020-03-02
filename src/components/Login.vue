@@ -11,7 +11,9 @@
         <input v-model="user.password" type="password" placeholder="Password">
         <input type="submit">
         </form>
-        <router-link to="/sign-up"> Sign up! </router-link>
+        <div> 
+            <h3 @click="handleClick" id="sign-up-link">Sign up</h3>
+        </div>
     </div>
     </div>
 </template>
@@ -30,7 +32,7 @@ export default {
     },
     methods: {
       ...mapActions(["postLogin", "getUser"]),
-      ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin"]),
+      ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin", 'toggleHideSignUp']),
       holyFuckinShit(token){
           this.getUser(token)
           localStorage.setItem('token', token)
@@ -52,6 +54,10 @@ export default {
             console.log(res.error)
         }
         })
+      },
+      handleClick(){
+          this.toggleHideLogin()
+          this.toggleHideSignUp()
       }
     },
     computed: mapGetters(["hideLogin"])
@@ -60,7 +66,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    h3{
+        padding: 0px;
+    }
   
+    #sign-up-link:hover{
+        color: cadetblue;
+        cursor: pointer;
+    }
+
     #hide{
         display: flex;
         opacity: 0;
@@ -68,7 +83,6 @@ export default {
         flex-wrap: wrap;
         box-shadow: 0px 0px 5px #666;
         width: 255px;
-        padding-bottom: 30px;
         transition: all 0.5s;
 
         #close{
@@ -113,7 +127,7 @@ export default {
         box-shadow: 0px 0px 5px #666;
         width: 255px;
         transition: all 0.5s;
-        padding-bottom: 30px;
+
     #close{
         padding-top: 12px;
         font-size: 25px;
@@ -123,6 +137,7 @@ export default {
     }
     .fa-times-circle:hover{
         color: black;
+        cursor: pointer;
     }
 
     h1{

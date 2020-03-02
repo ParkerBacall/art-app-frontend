@@ -1,9 +1,14 @@
 <template>
     <div>
         <Header/>
-       <h1> {{$route.params.gene.name}}</h1>
+       <div id='title-div'>
+       <h1 > {{$route.params.gene.name}}</h1>
+       </div>
         <p>{{$route.params.gene.description}}</p>
         <div id="artists">
+            <div id="grid-header">
+                <h2>Artists:</h2>
+            </div>
         <div @click="logInfo(gene)" v-for="gene in genes" :key="gene.id" id ="artist">
             <img :src = "gene._links.thumbnail.href"/>
             <h3>
@@ -55,10 +60,21 @@ export default {
     p{
         padding: 10px;
     }
+    #title-div{
+         display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
     #artists{
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+    #grid-header{
+        padding-top: 0px;
+       width: 100%;
+       display: flex;
+       justify-content: center;
+    }
       #artist{
             width:20%;
             height:20%;

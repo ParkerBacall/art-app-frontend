@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import SignUp from '../views/SignUp'
-import Home from '../views/Home'
 import Read from '../views/Read'
 import ReadArtists from '../views/ReadArtists'
 import Explore from '../views/Explore'
+import Genres from '../views/Genres'
+import Home from '../views/Home'
 
 Vue.use(VueRouter)
 
@@ -15,9 +15,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/sign-up',
-    name: 'SignUp',
-    component: SignUp
+    path: '/genres',
+    name: 'Genres',
+    component: Genres
   },
   {
     path: '/explore',

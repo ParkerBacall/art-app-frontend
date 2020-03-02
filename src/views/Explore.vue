@@ -1,6 +1,11 @@
 <template>
     <div>
         <Header/>
+        <h1>
+       <div v-for="gene in selectedGenes" :key=gene.id>
+           {{gene.name}}
+       </div>
+       </h1>
     </div>
 </template>
 
@@ -21,7 +26,7 @@ export default {
     },
     },
     computed: mapGetters(['selectedGenes','user', 'isLoggedIn']),
-    mounted(){ 
+    created(){ 
         this.isLoggedIn 
         ? 
         this.setSelectedGenes(this.user.genre)

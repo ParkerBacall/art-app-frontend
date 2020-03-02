@@ -1,10 +1,8 @@
 <template>
   <div id='sign-up-panel-container'>
     <div id='sign-up-panel'>
-       
             <div id='backbtn'>
-               <router-link class="fas fa-chevron-circle-left" to="/"> 
-              </router-link>
+               <div class="fas fa-chevron-circle-left" /> 
             </div>
       <div id=header-div>
           <h1>sign up</h1>
@@ -51,40 +49,27 @@ export default {
         })
         .then(res => res.json())
         .then(res=> this.LoginFunctions(res.token))
-      }
-
+      },
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.fa-chevron-circle-left:hover{
-  color: black
-}
-fa-chevron-circle-left{
-
-}
-a {  
-  text-decoration: none
-  }
-a:hover{
-
-}
     #sign-up-panel-container{
+      position: absolute;
       display: flex;
       justify-content: center;
+      
     #sign-up-panel{
+       margin-top: 6%;
+       margin-left: 36%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        width: 50%;
+        width: 900px;
         box-shadow: 0px 0px 5px #666;
         padding: 10px;
-        #backbtn{
-          position: absolute;
-          padding-right: 680px;
-          font-size: 25px;
-        }
+        background-color: #999;
         #header-div{
           width: 100%;
           display: flex;

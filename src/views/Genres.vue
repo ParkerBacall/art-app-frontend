@@ -23,10 +23,10 @@
 
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
-import FilterCount from './FilterCount'
-import Nav from './Nav'
+import FilterCount from '../components/FilterCount'
+import Nav from '../components/Nav'
 export default {
-    name: 'InfluencesGrid',
+    name: 'Genres',
     components: {
         FilterCount,
         Nav
@@ -57,9 +57,12 @@ export default {
         }
     }, 
     computed: mapGetters(['genes', 'selectedGenes', 'user', 'user_genes']),
-    mounted(){
+    beforeMount(){
         this.fetchGenes(70)
     },
+    mounted(){
+        // console.log(this.user.genre)
+    }
 }
 </script>
 
