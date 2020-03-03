@@ -9,7 +9,9 @@ const getters={
     isLoggedIn: (state) => state.isLoggedIn,
     user: (state) => state.user,
     hideLogin: (state) => state.hideLogin,
-    hideSignUp: (state) => state.hideSignUp
+    hideSignUp: (state) => state.hideSignUp,
+    artists: (state) => state.user.genre.map(genre => genre.artists)
+    
 }
 
 const actions={

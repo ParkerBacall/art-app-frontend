@@ -8,7 +8,7 @@
 <script>
  import Login from "../components/Login"
  import SignUp from "../components/SignUp"
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: "Home",
     components:{
@@ -16,6 +16,7 @@ export default {
         SignUp
     },
     methods:{
+    ...mapActions(['getUser']),
     checkLoggedin(){
       localStorage.token
       ?
@@ -24,7 +25,10 @@ export default {
       null
       }
     },
-    computed: mapGetters(['hideSignUp']),
+    computed: mapGetters(['hideSignUp', 'isLoggedIn']),
+    created(){
+        this.getUser(localStorage.getItem('token'))
+    },
     mounted(){
         this.checkLoggedin()
     }

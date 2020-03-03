@@ -1,6 +1,5 @@
 <template>
     <div>
-        ddsadsa
         <Nav/>
         <FilterCount />
         <div id='artwork-grid'>
@@ -14,7 +13,7 @@
             {{gene.name}}
             </h3>
             </div>
-            <div id='link-div'>
+                <div id='link-div'>
              <router-link :to="{ name: 'Read', params: {gene: gene, id: gene.name}}"> About Genre </router-link>
              </div>
         </div>
@@ -33,7 +32,7 @@ export default {
         Nav
 },
     methods: {
-        ...mapActions(['fetchGenes']),
+        ...mapActions(['fetchGenes', 'getUser']),
         ...mapMutations(['addSelectedGene', 'removeSelectedGene', 'setSelectedGenes']),
         handleClick(gene, user){
            if (!user.genre.map(genre => genre.name).includes(gene.name)){
@@ -59,8 +58,10 @@ export default {
     }, 
     computed: mapGetters(['genes', 'user']),
     created(){
-        this.getUSer(localStorage.getItem('token'))
+        this.getUser(localStorage.getItem('token'))
     },
+    mounted(){
+    }
 }
 </script>
 

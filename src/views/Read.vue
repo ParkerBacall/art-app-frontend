@@ -39,7 +39,6 @@ export default {
         },
         computed: mapGetters(['genes']),
     mounted(){
-        // this.toggleBaseState(),
         fetch(this.$route.params.gene._links.artists.href, {
              method: 'GET',
             headers: {

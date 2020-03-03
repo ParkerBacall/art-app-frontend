@@ -2,10 +2,16 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1Ympl
 
 const state= {
     genes:[],
+    exploreArtists: [],
+    exploreSimilarArtists: [],
+    similarArtists: []
 }
 
 const getters={
     genes: (state) => state.genes,
+    exploreArtists: (state) => state.exploreArtists,
+    similarArtists: (state) => state.exploreArtists.map(Artist => Artist._links.similar_artists.href),
+    exploreSimilarArtists: (state) => state.exploreSimilarArtists
 }
 
 const actions = {
@@ -33,11 +39,38 @@ const actions = {
         })
              .then(res =>  res.json())
              .then(genes => commit('addGenes', genes._embedded.genes))
-}
+},
+    fetchArtists({commit}, url){
+        fetch(url, {
+            method: 'GET',
+            headers: {
+              'X-Xapp-Token': xappToken,
+              'Accept': 'application/vnd.artsy-v2+json'
+            }
+        })
+        .then(res => res.json())
+        .then(artists => commit('addArtists', artists._embedded.artists))
+    },
+    fetchSimilarArtists({commit}, url){
+        console.log('hit')
+        fetch(url, {
+            method: 'GET',
+            headers: {
+              'X-Xapp-Token': xappToken,
+              'Accept': 'application/vnd.artsy-v2+json'
+            }
+        })
+        .then(res => res.json())
+        .then(artists => console.log(artists._embedded.artists))
+        .then(artists => commit('addSimilarArtists', artists._embedded.artists))
+    }
+
 }
 
 const mutations= {
     addGenes: (state, genes) => state.genes = genes,
+    addArtists: (state, artists) => state.exploreArtists = [...state.exploreArtists, ...artists],
+    addSimilarArtists: (state, artists) => state.exploreSimilarArtists = [...state.exploreSimilarArtists, ...artists]
 }
 
 export default {

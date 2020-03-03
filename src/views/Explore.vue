@@ -1,38 +1,93 @@
 <template>
     <div>
-        <Header/>
-        <h1>
-       <div v-for="genre in user.genre" :key=genre.id>
-           {{genre.name}}
+        <Nav/>
+       <div id='explore-grid'>
+       <div id="explore" v-for="artist in exploreArtists" :key=artist.id>
+           <img :src="artist._links.thumbnail.href" alt=""/>
+          <div id="h3-div">
+          <h3>{{artist.name}}</h3>
+          </div>
+           <div id='link-div'>
+             <router-link :to="{ name: 'ReadArtists', params: {gene: artist, id: artist.name}}"> About artist </router-link>
+             </div>
+              <div id="explore" v-for="artist in exploreSimilarArtists" :key=artist.id>
+           <img :src="artist._links.thumbnail.href" alt=""/>
+          <div id="h3-div">
+          <h3>{{artist.name}}</h3>
+          </div>
+           <div id='link-div'>
+             <router-link :to="{ name: 'ReadArtists', params: {gene: artist, id: artist.name}}"> About artist </router-link>
+             </div>
+             </div>
        </div>
-       </h1>
+       </div>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
-import Header from '../components/Header'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import Nav from '../components/Nav'
 export default {
     name: 'Explore',
     components: {
-        Header
+        Nav,
     },
     methods: {
         ...mapMutations(['setSelectedGenes','toggleLogin', 'toggleHideLogin']),
+        ...mapActions(['fetchArtists', 'fetchSimilarArtists']),
     toggleBaseState(){
       this.toggleLogin()
       this.toggleHideLogin()
       this.getUser(localStorage.getItem('user'))
     },
     },
-    computed: mapGetters(['selectedGenes','user', 'isLoggedIn']),
-    created(){ 
+    computed: mapGetters(['user', 'isLoggedIn', 'artists', 'exploreArtists', 'similarArtists', 'exploreSimilarArtists']),
+    async created(){ 
         this.isLoggedIn 
         ? 
-        this.setSelectedGenes(this.user.genre)
+        await this.artists.map(artist => {
+            this.fetchArtists(artist)
+        })
         :
         this.toggleBaseState()
-    }
+    },
+    mounted(){
+        this.similarArtists.map(artist => {
+            this.fetchSimilarArtists(artist)
+        })
+    },
+
 }
 </script>
 
+<style lang="scss" scoped>
+    #explore-grid{
+        padding-top: 40px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+         #explore{
+            width: 20%;
+            height: 20%;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0px 0px 4px #666
+        }
+            img{
+                width: 90%;
+                padding-left: 10px;
+                
+            }
+                        #h3-div{
+                display: flex;
+                justify-content: center;
+                h3{
+                    text-align: center;
+                }
+            }
+            #link-div{
+                display: flex;
+                justify-content: center;
+            }
+    }
+</style>

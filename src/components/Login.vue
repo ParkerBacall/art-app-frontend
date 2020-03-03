@@ -33,14 +33,14 @@ export default {
     methods: {
       ...mapActions(["postLogin", "getUser"]),
       ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin", 'toggleHideSignUp']),
-      holyFuckinShit(token){
-          this.getUser(token)
+      async holyFuckinShit(token){
+          await this.getUser(token)
           localStorage.setItem('token', token)
           this.toggleLogin()
+          this.$router.push('/genres')
       },
       handleSubmit(event){
         event.preventDefault()
-        this.$router.push('/genres')
         fetch('http://localhost:9001/login', {
             method: 'POST',
             headers: {

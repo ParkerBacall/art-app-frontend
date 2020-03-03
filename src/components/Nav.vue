@@ -2,6 +2,7 @@
     <div id='nav-div'>
              <router-link to="/read"> Artists </router-link>
              <router-link to="/explore"> Explore </router-link>
+             <router-link to="/genres"> Genres </router-link>
     </div>
 </template>
 
@@ -14,7 +15,6 @@ export default {
 <style lang="scss" scoped>
     #nav-div{
          padding-top: 90px;
-        // padding-bottom: 25px;
          display: flex;
          justify-content: space-evenly;
     }

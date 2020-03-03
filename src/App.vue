@@ -31,10 +31,10 @@ export default {
     },
    computed: mapGetters(['isLoggedIn', 'user', 'hideSignUp']),
    async created() {
-     await this.getUser(localStorage.getItem('token'))
-     this.checkLoggedin()
+     await this.checkLoggedin()
    },
-   mounted(){
+   async mounted(){
+     await this.getUser(localStorage.getItem('token'))
       this.fetchGenes(70)
    }
   
