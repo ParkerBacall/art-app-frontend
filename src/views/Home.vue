@@ -16,9 +16,18 @@ export default {
         SignUp
     },
     methods:{
-
+    checkLoggedin(){
+      localStorage.token
+      ?
+      this.$router.push('/genres')
+      :
+      null
+      }
     },
     computed: mapGetters(['hideSignUp']),
+    mounted(){
+        this.checkLoggedin()
+    }
 }
 </script>
 

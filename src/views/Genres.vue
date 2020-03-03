@@ -4,7 +4,7 @@
         <Nav/>
         <FilterCount />
         <div id='artwork-grid'>
-        <div @click="handleClick(selectedGenes, gene, user)" 
+        <div @click="handleClick( gene, user)" 
         :id="user.genre.map(genre => genre.name).includes(gene.name) ? 'selected' : 'artwork'" 
         v-for="gene in genes" 
         :key="gene.id">
@@ -35,8 +35,8 @@ export default {
     methods: {
         ...mapActions(['fetchGenes']),
         ...mapMutations(['addSelectedGene', 'removeSelectedGene', 'setSelectedGenes']),
-        handleClick(selectedGenes, gene, user){
-           if (!selectedGenes.includes(gene)){
+        handleClick(gene, user){
+           if (!user.genre.map(genre => genre.name).includes(gene.name)){
                 this.addSelectedGene(gene)
                 fetch('http://localhost:9001/genres',{
                     method: 'POST',
@@ -57,8 +57,9 @@ export default {
            }
         }
     }, 
-    computed: mapGetters(['genes', 'selectedGenes', 'user']),
-    mounted(){
+    computed: mapGetters(['genes', 'user']),
+    created(){
+        this.getUSer(localStorage.getItem('token'))
     },
 }
 </script>

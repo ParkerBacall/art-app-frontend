@@ -32,22 +32,26 @@ export default {
     },
     methods: {      
     ...mapMutations(['toggleLogin','getUser', 'toggleHideLogin','toggleHideSignUp']),
-       LoginFunctions(token){
-        this.getUser(token)
-        .then(this.$router.push('/genres'))
-        this.toggles()
-        localStorage.setItem("token", token)
-      },
-      toggles(){
+      async LoginFunctions(token){
+      await this.first(token)
+      localStorage.setItem("token", token)
         this.toggleLogin()
         this.toggleHideLogin()
         this.toggleHideSignUp()
+        this.second()
+      },
+      first(token){
+        this.getUser(token)
+      },
+      second(){
+        this.$router.push('/genres')
       },
       handleClick(){
         this.toggleHideSignUp()
       },
       async handleSubmit(event){
         event.preventDefault()
+        console.log('1')
         fetch('http://localhost:9001/users', {
             method: 'POST',
             headers: {

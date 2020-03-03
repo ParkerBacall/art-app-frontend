@@ -20,7 +20,6 @@ export default {
     toggleBaseState(){
       this.toggleLogin()
       this.toggleHideLogin()
-      this.$router.push('/genres')
     },
     checkLoggedin(){
       localStorage.token

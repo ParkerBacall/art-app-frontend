@@ -2,8 +2,8 @@
     <div>
         <Header/>
         <h1>
-       <div v-for="gene in selectedGenes" :key=gene.id>
-           {{gene.name}}
+       <div v-for="genre in user.genre" :key=genre.id>
+           {{genre.name}}
        </div>
        </h1>
     </div>

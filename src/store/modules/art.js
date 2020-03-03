@@ -2,12 +2,10 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1Ympl
 
 const state= {
     genes:[],
-    selectedGenes:[]
 }
 
 const getters={
     genes: (state) => state.genes,
-    selectedGenes: (state) => state.selectedGenes
 }
 
 const actions = {
@@ -40,9 +38,6 @@ const actions = {
 
 const mutations= {
     addGenes: (state, genes) => state.genes = genes,
-    addSelectedGene: (state, selectedGene) =>  state.selectedGenes.unshift(selectedGene),
-    setSelectedGenes: (state, genes) => state.selectedGenes = genes,
-    removeSelectedGene: (state, gene) => state.selectedGenes = state.selectedGenes.filter(selectedGene => gene.id !== selectedGene.id)
 }
 
 export default {
