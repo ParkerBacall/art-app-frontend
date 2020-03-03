@@ -1,11 +1,11 @@
 <template>
     <div>
         ddsadsa
-    <Nav/>
+        <Nav/>
         <FilterCount />
         <div id='artwork-grid'>
         <div @click="handleClick(selectedGenes, gene, user)" 
-        :id="selectedGenes.includes(gene) ? 'selected' : 'artwork'" 
+        :id="user.genre.map(genre => genre.name).includes(gene.name) ? 'selected' : 'artwork'" 
         v-for="gene in genes" 
         :key="gene.id">
             <img :src = "gene._links.thumbnail.href"/>
@@ -57,13 +57,9 @@ export default {
            }
         }
     }, 
-    computed: mapGetters(['genes', 'selectedGenes', 'user', 'user_genes']),
-    beforeMount(){
-        this.fetchGenes(70)
-    },
+    computed: mapGetters(['genes', 'selectedGenes', 'user']),
     mounted(){
-        // console.log(this.user.genre)
-    }
+    },
 }
 </script>
 

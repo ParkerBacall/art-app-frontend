@@ -13,7 +13,7 @@ const getters={
 }
 
 const actions={
-    getUser({commit}, token){
+     getUser({commit}, token){
 
         fetch('http://localhost:9001/users',{
             method: 'GET',

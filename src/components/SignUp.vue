@@ -32,9 +32,13 @@ export default {
     },
     methods: {      
     ...mapMutations(['toggleLogin','getUser', 'toggleHideLogin','toggleHideSignUp']),
-      LoginFunctions(token){
+       LoginFunctions(token){
         this.getUser(token)
+        .then(this.$router.push('/genres'))
+        this.toggles()
         localStorage.setItem("token", token)
+      },
+      toggles(){
         this.toggleLogin()
         this.toggleHideLogin()
         this.toggleHideSignUp()
@@ -42,9 +46,8 @@ export default {
       handleClick(){
         this.toggleHideSignUp()
       },
-      handleSubmit(event){
+      async handleSubmit(event){
         event.preventDefault()
-        this.$router.push('/genres')
         fetch('http://localhost:9001/users', {
             method: 'POST',
             headers: {

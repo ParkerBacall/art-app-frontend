@@ -8,18 +8,19 @@
 
 <script>
  import Header from "./components/Header"
- import {mapMutations, mapActions} from 'vuex'
+ import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
   name: 'App',
   components: {
     Header,    
   },
   methods: {
-    ...mapActions(['getUser']),
+    ...mapActions(['getUser', 'fetchGenes']),
     ...mapMutations(['toggleLogin', 'toggleHideLogin', 'setSelectedGenes']),
     toggleBaseState(){
       this.toggleLogin()
       this.toggleHideLogin()
+      this.$router.push('/genres')
     },
     checkLoggedin(){
       localStorage.token
@@ -29,13 +30,16 @@ export default {
       null
       }
     },
-   created() {
-     this.checkLoggedin(),
-     this.getUser(localStorage.getItem('token'))
+   computed: mapGetters(['isLoggedIn', 'user', 'hideSignUp']),
+   async created() {
+     await this.getUser(localStorage.getItem('token'))
+     this.checkLoggedin()
    },
    mounted(){
-     console.log(this.user.genre)
+      this.fetchGenes(70)
    }
+  
+
 }
 </script>
 
