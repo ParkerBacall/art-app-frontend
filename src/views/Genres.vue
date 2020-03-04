@@ -1,7 +1,10 @@
 <template>
     <div>
         <Nav/>
-        <FilterCount />
+        <div id='title-div'>
+            <h1>Genres</h1>
+        </div>
+         <FilterGenreCount />
         <div id='artwork-grid'>
         <div @click="handleClick(gene, user)" 
         :id="user.genre.map(genre => genre.name).includes(gene.name) ? 'selected' : 'artwork'" 
@@ -23,12 +26,12 @@
 
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
-import FilterCount from '../components/FilterCount'
+import FilterGenreCount from '../components/FilterGenreCount'
 import Nav from '../components/Nav'
 export default {
     name: 'Genres',
     components: {
-        FilterCount,
+        FilterGenreCount,
         Nav
 },
     methods: {
@@ -78,7 +81,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
+   #title-div{
+        display: flex;
+        justify-content: center;
+        h1{
+            margin-bottom: 5px; 
+        }
+    }
+
         #artwork-grid{
         display: flex;
         justify-content: center;

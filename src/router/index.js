@@ -6,6 +6,7 @@ import Explore from '../views/Explore'
 import Genres from '../views/Genres'
 import Artists from '../views/Artists'
 import Home from '../views/Home'
+import Inspo from '../views/Inspo'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,11 @@ const routes = [
     path: '/genres',
     name: 'Genres',
     component: Genres
+  },
+  {
+    path: '/art-inspo-of-the-day',
+    name: 'Inspo',
+    component: Inspo
   },
   {
     path: '/artists',

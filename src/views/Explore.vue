@@ -1,6 +1,9 @@
 <template>
     <div>
     <Nav/>
+    <div id='title-div'>
+        <h1>Explore</h1>
+        </div>
        <div id='explore-grid'>
        <div id="explore" v-for="artist in exploreArtists" :key=artist.id>
            <img :src="artist._links.thumbnail.href" alt=""/>
@@ -56,6 +59,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+ #title-div{
+        display: flex;
+        justify-content: center;
+    }
     #explore-grid{
         padding-top: 40px;
         display: flex;

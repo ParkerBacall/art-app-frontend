@@ -1,6 +1,6 @@
 <template>
     <div id="filter-div">
-          <select @change="filterCount($event)">
+          <select @change="filterGenreCount($event)">
             <option value="50">50</option>
             <option value="100">100</option>
             <option value="150">150</option>
@@ -15,8 +15,8 @@
 <script>
 import {mapActions} from 'vuex'
 export default {
-    name: 'FilterCount',
-    methods: mapActions(["filterCount"])
+    name: 'FilterGenreCount',
+    methods: mapActions(["filterGenreCount"])
 }
 </script>
 

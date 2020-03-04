@@ -3,6 +3,7 @@
              <router-link to="/artists"> Artists </router-link>
              <router-link to="/explore"> Explore </router-link>
              <router-link to="/genres"> Genres </router-link>
+             <router-link to="/art-inspo-of-the-day"> Inspo </router-link>
     </div>
 </template>
 

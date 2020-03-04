@@ -42,9 +42,7 @@ export default {
         computed: mapGetters(['genreArtists', 'readGenre']),
     mounted(){
         this.getUser(localStorage.getItem('token'))
-        if (this.$route.params.gene) {
-        this.addReadData(this.$route.params.gene)
-        }
+        this.addReadData(this.$route.params.gene)    
         fetch(this.$route.params.gene._links.artists.href, {
              method: 'GET',
             headers: {

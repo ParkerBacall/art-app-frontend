@@ -15,7 +15,7 @@ export default {
     Header,    
   },
   methods: {
-    ...mapActions(['getUser', 'fetchGenes']),
+    ...mapActions(['getUser', 'fetchGenes', 'fetchArtists']),
     ...mapMutations(['toggleLogin', 'toggleHideLogin', 'setSelectedGenes']),
     toggleBaseState(){
       this.toggleLogin()
