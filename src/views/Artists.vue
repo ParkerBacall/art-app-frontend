@@ -7,7 +7,8 @@
         <FilterArtistCount/>
         <div id='artwork-grid'>
         <div 
-        id="artwork" 
+         @click="handleClick(artist, user)"
+        :id="user.artists.map(artist => artist.name).includes(artist.name) ? 'selected' : 'artwork' "
         v-for="artist in goodArtists" 
         :key="artist.id">
             <img v-if='artist._links.thumbnail' :src= "artist._links.thumbnail.href"/>
@@ -16,7 +17,7 @@
             {{artist.name}}
             </h3>
             </div>
-             <div id='link-div'>
+             <div @click='handleRouterClick' id='link-div'>
              <router-link :to="{ name: 'ReadArtists', params: {gene: artist, id: artist.name}}"> About Artist </router-link>
              </div>
         </div>
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 import Nav from '../components/Nav'
 import FilterArtistCount from '../components/FilterArtistCount'
 export default {
@@ -36,9 +37,45 @@ export default {
     },
     methods: {
         ...mapActions(['getUser', 'fetchAllArtists']),
+        ...mapMutations(['addSelectedArtist', 'removeSelectedArtist']),
+        handleClick(artist, user){
+            if (!user.artists.map(artist => artist.name).includes(artist.name)){
+            this.addSelectedArtist(artist)
+            fetch('http://localhost:9001/artists',{
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify ({
+                        name: artist.name, 
+                        similar_artists: artist._links.similar_artists.href,
+                        similar_contemporary_artists: artist._links. similar_contemporary_artists.href,
+                        artworks: artist._links.artworks.href,
+                        user_id: user.id
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(console.log)
+                }
+                else{
+                this.removeSelectedArtist(artist)
+                fetch(`http://localhost:9001/artists`,{
+                   method: 'DELETE',
+                   headers:{
+                       'content-type': 'application/json'
+                   },
+                   body: JSON.stringify ({name: artist.name, user_id: user.id})
+               })
+               .then(res => res.json())
+               .then(console.log)
+           }
+        },
+        handleRouterClick(e){
+            e.stopImmediatePropagation()
+        }
     },
     computed: {
-        ...mapGetters(['artists']),
+        ...mapGetters(['artists', 'user']),
         goodArtists(){
             return this.artists.filter(artist => artist._links.thumbnail)
         }

@@ -35,7 +35,10 @@ const mutations={
     clearUser: (state) => state.user = {},
     toggleHideSignUp: (state) => state.hideSignUp = !state.hideSignUp,
     addSelectedGene: (state, selectedGene) =>  state.user.genre.unshift(selectedGene),
-    removeSelectedGene: (state, gene) => state.user.genre = state.user.genre.filter(selectedGene => gene.name !== selectedGene.name)
+    removeSelectedGene: (state, gene) => state.user.genre = state.user.genre.filter(selectedGene => gene.name !== selectedGene.name),
+    addSelectedArtist: (state, selectedArtist) => state.user.artists.unshift(selectedArtist),
+    removeSelectedArtist: (state, artist) => state.user.artists = state.user.artists.filter(selectedArtist => artist.name !== selectedArtist.name),
+
 }
 
 
