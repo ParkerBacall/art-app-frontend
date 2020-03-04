@@ -84,6 +84,17 @@ const actions = {
         .then(res => res.json())
         .then(artists => commit('addExploreArtists', artists._embedded.artists))
     },
+    fetchSimilarArtists({commit}, url){
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'X-Xapp-Token': xappToken,
+          'Accept': 'application/vnd.artsy-v2+json'
+        }
+    })
+    .then(res => res.json())
+    .then(artists => commit('addExploreArtists', artists._embedded.artists))
+    }
 }
 
 const mutations= {
@@ -91,7 +102,6 @@ const mutations= {
     addArtists: (state, artists) => state.artists = artists,
     addGenreArtists: (state, genes) => state.genreArtists = genes,
     addExploreArtists: (state, artists) => artists.map(artist => !state.exploreArtists.map(artist=>artist.id).includes(artist.id) ? state.exploreArtists.push(artist) : null),
-    addSimilarArtists: (state, artists) => state.similarArtists = artists,
     addReadData: (state, genre) => state.readGenre = genre,
     addReadArtist: (state, artist) => state.readArtist = artist
 }

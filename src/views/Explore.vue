@@ -36,25 +36,26 @@ export default {
         Nav,
     },
     methods: {
-        ...mapActions(['fetchArtists', 'getUser']),
+        ...mapActions(['fetchSimilarArtists','fetchArtists', 'getUser',]),
+        fetchBois(){
+            ([...this.user.artists.map(artist => artist.similar_artists), ...this.user.genre.map(genre => genre.artists)]).map(artist => {
+                this.fetchArtists(artist)
+            })
+        }
     },
     computed: mapGetters(['user', 'artists', 'exploreArtists', 'similarArtists']),
       async created(){
         await this.getUser(localStorage.getItem('token'))
-        this.user.genre.map(genre => {
-            this.fetchArtists(genre.artists)
-        })
+        this.fetchBois()
+        },
+        mounted(){
+          
         },
         updated(){
             this.user.genre.map(genre => {
                 this.fetchArtists(genre.artists)
          })
-        },
-         destroyed(){
-               this.user.genre.map(genre => {
-                this.fetchArtists(genre.artists)
-         })
-         },
+        }
 }
 </script>
 
