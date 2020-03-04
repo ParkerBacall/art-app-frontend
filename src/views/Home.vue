@@ -27,7 +27,7 @@ export default {
     },
     computed: mapGetters(['hideSignUp', 'isLoggedIn']),
     created(){
-        this.getUser(localStorage.getItem('token'))
+       
     },
     mounted(){
         this.checkLoggedin()

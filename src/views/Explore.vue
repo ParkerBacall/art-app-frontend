@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Nav/>
+    <Nav/>
        <div id='explore-grid'>
        <div id="explore" v-for="artist in exploreArtists" :key=artist.id>
            <img :src="artist._links.thumbnail.href" alt=""/>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Nav from '../components/Nav'
 export default {
     name: 'Explore',
@@ -33,30 +33,25 @@ export default {
         Nav,
     },
     methods: {
-        ...mapMutations(['setSelectedGenes','toggleLogin', 'toggleHideLogin']),
-        ...mapActions(['fetchArtists', 'fetchSimilarArtists']),
-    toggleBaseState(){
-      this.toggleLogin()
-      this.toggleHideLogin()
-      this.getUser(localStorage.getItem('user'))
+        ...mapActions(['fetchArtists', 'getUser']),
     },
-    },
-    computed: mapGetters(['user', 'isLoggedIn', 'artists', 'exploreArtists', 'similarArtists', 'exploreSimilarArtists']),
-    async created(){ 
-        this.isLoggedIn 
-        ? 
-        await this.artists.map(artist => {
-            this.fetchArtists(artist)
+    computed: mapGetters(['user', 'artists', 'exploreArtists', 'similarArtists']),
+      async created(){
+        await this.getUser(localStorage.getItem('token'))
+        this.user.genre.map(genre => {
+            this.fetchArtists(genre.artists)
         })
-        :
-        this.toggleBaseState()
-    },
-    mounted(){
-        this.similarArtists.map(artist => {
-            this.fetchSimilarArtists(artist)
-        })
-    },
-
+        },
+        updated(){
+            this.user.genre.map(genre => {
+                this.fetchArtists(genre.artists)
+         })
+        },
+         destroyed(){
+               this.user.genre.map(genre => {
+                this.fetchArtists(genre.artists)
+         })
+         },
 }
 </script>
 

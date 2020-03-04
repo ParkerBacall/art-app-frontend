@@ -3,7 +3,7 @@
         <Nav/>
         <FilterCount />
         <div id='artwork-grid'>
-        <div @click="handleClick( gene, user)" 
+        <div @click="handleClick(gene, user)" 
         :id="user.genre.map(genre => genre.name).includes(gene.name) ? 'selected' : 'artwork'" 
         v-for="gene in genes" 
         :key="gene.id">
@@ -13,7 +13,7 @@
             {{gene.name}}
             </h3>
             </div>
-                <div id='link-div'>
+             <div @click='handleRouterClick' id='link-div'>
              <router-link :to="{ name: 'Read', params: {gene: gene, id: gene.name}}"> About Genre </router-link>
              </div>
         </div>
@@ -34,6 +34,9 @@ export default {
     methods: {
         ...mapActions(['fetchGenes', 'getUser']),
         ...mapMutations(['addSelectedGene', 'removeSelectedGene', 'setSelectedGenes']),
+        handleRouterClick(e){
+            e.stopImmediatePropagation()
+        },
         handleClick(gene, user){
            if (!user.genre.map(genre => genre.name).includes(gene.name)){
                 this.addSelectedGene(gene)
@@ -53,15 +56,24 @@ export default {
                         .then(console.log)
            } else{
                this.removeSelectedGene(gene)
+               fetch(`http://localhost:9001/genres`,{
+                   method: 'DELETE',
+                   headers:{
+                       'content-type': 'application/json'
+                   },
+                   body: JSON.stringify ({name: gene.name, user_id: user.id})
+               })
+               .then(res => res.json())
+               .then(console.log)
            }
+
         }
     }, 
     computed: mapGetters(['genes', 'user']),
     created(){
         this.getUser(localStorage.getItem('token'))
     },
-    mounted(){
-    }
+  
 }
 </script>
 

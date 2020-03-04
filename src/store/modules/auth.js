@@ -11,13 +11,12 @@ const getters={
     hideLogin: (state) => state.hideLogin,
     hideSignUp: (state) => state.hideSignUp,
     artists: (state) => state.user.genre.map(genre => genre.artists)
-    
 }
 
 const actions={
-     getUser({commit}, token){
+     async getUser({commit}, token){
 
-        fetch('http://localhost:9001/users',{
+       await fetch('http://localhost:9001/users',{
             method: 'GET',
             headers:{
                 authorization: `Bearer ${token}`,

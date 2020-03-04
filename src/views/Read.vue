@@ -1,15 +1,16 @@
 <template>
     <div>
         <Header/>
+         <Nav/>
        <div id='title-div'>
-       <h1 > {{$route.params.gene.name}}</h1>
+       <h1> {{readGenre.name}}</h1>
        </div>
-        <p>{{$route.params.gene.description}}</p>
+        <p>{{readGenre.description}}</p>
         <div id="artists">
             <div id="grid-header">
                 <h2>Artists:</h2>
             </div>
-        <div @click="logInfo(gene)" v-for="gene in genes" :key="gene.id" id ="artist">
+        <div @click="logInfo(gene)" v-for="gene in genreArtists" :key="gene.id" id ="artist">
             <img :src = "gene._links.thumbnail.href"/>
             <h3>
             {{gene.name}}
@@ -22,23 +23,28 @@
 
 <script>
 import Header from '../components/Header'
-import {mapMutations, mapGetters} from 'vuex'
+import Nav from '../components/Nav'
+import {mapActions, mapMutations, mapGetters} from 'vuex'
 export default {
     name: 'Read',
-    props: ["gene", "id"],
     components: {
-        Header
+        Header,
+        Nav
         },
         methods:{
-            ...mapMutations(['addGenes']),
-             ...mapMutations(['setSelectedGenes','toggleLogin', 'toggleHideLogin']),
+             ...mapActions(['getUser']),
+             ...mapMutations(['addReadData','addGenreArtists','toggleLogin', 'toggleHideLogin']),
             toggleBaseState(){
             this.toggleLogin()
             this.toggleHideLogin()
             }
         },
-        computed: mapGetters(['genes']),
+        computed: mapGetters(['genreArtists', 'readGenre']),
     mounted(){
+        this.getUser(localStorage.getItem('token'))
+        if (this.$route.params.gene) {
+        this.addReadData(this.$route.params.gene)
+        }
         fetch(this.$route.params.gene._links.artists.href, {
              method: 'GET',
             headers: {
@@ -47,14 +53,14 @@ export default {
             }
           })
           .then(response => response.json())
-          .then(res => this.addGenes(res._embedded.artists))
+          .then(res => this.addGenreArtists(res._embedded.artists))
     }
 }
 </script>
 
 <style lang="scss" scoped>
     h1{
-        padding-top: 80px;
+        padding-top: 15px;
     }
     p{
         padding: 10px;

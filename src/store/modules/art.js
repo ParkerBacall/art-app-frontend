@@ -2,21 +2,27 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1Ympl
 
 const state= {
     genes:[],
+    genreArtists: [],
     exploreArtists: [],
     exploreSimilarArtists: [],
-    similarArtists: []
+    similarArtists: [],
+    readGenre: {},
+    readArtist: {}
 }
 
 const getters={
     genes: (state) => state.genes,
+    genreArtists: (state) => state.genreArtists,
     exploreArtists: (state) => state.exploreArtists,
     similarArtists: (state) => state.exploreArtists.map(Artist => Artist._links.similar_artists.href),
-    exploreSimilarArtists: (state) => state.exploreSimilarArtists
+    exploreSimilarArtists: (state) => state.exploreSimilarArtists,
+    readGenre: (state) => state.readGenre ,
+    readArtist: (state) => state.readArtist
 }
 
 const actions = {
-    fetchGenes({commit}, count){
-        fetch(`https://api.artsy.net/api/genes?size=${count}`,{
+     async fetchGenes({commit}, count){
+        await fetch(`https://api.artsy.net/api/genes?size=${count}`,{
             method: 'GET',
             headers: {
               'X-Xapp-Token': xappToken,
@@ -49,10 +55,9 @@ const actions = {
             }
         })
         .then(res => res.json())
-        .then(artists => commit('addArtists', artists._embedded.artists))
+        .then(artists => commit('addExploreArtists', artists._embedded.artists))
     },
     fetchSimilarArtists({commit}, url){
-        console.log('hit')
         fetch(url, {
             method: 'GET',
             headers: {
@@ -61,7 +66,6 @@ const actions = {
             }
         })
         .then(res => res.json())
-        .then(artists => console.log(artists._embedded.artists))
         .then(artists => commit('addSimilarArtists', artists._embedded.artists))
     }
 
@@ -69,8 +73,11 @@ const actions = {
 
 const mutations= {
     addGenes: (state, genes) => state.genes = genes,
-    addArtists: (state, artists) => state.exploreArtists = [...state.exploreArtists, ...artists],
-    addSimilarArtists: (state, artists) => state.exploreSimilarArtists = [...state.exploreSimilarArtists, ...artists]
+    addGenreArtists: (state, genes) => state.genreArtists = genes,
+    addExploreArtists: (state, artists) => artists.map(artist => !state.exploreArtists.map(artist=>artist.id).includes(artist.id) ? state.exploreArtists.push(artist) : null),
+    addSimilarArtists: (state, artists) => state.exploreSimilarArtists = [...state.exploreSimilarArtists, ...artists],
+    addReadData: (state, genre) => state.readGenre = genre,
+    addReadArtist: (state, artist) => state.readArtist = artist
 }
 
 export default {
