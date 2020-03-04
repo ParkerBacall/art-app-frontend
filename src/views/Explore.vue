@@ -13,15 +13,6 @@
            <div id='link-div'>
              <router-link :to="{ name: 'ReadArtists', params: {gene: artist, id: artist.name}}"> About artist </router-link>
              </div>
-              <div id="explore" v-for="artist in exploreSimilarArtists" :key=artist.id>
-           <img :src="artist._links.thumbnail.href" alt=""/>
-          <div id="h3-div">
-          <h3>{{artist.name}}</h3>
-          </div>
-           <div id='link-div'>
-             <router-link :to="{ name: 'ReadArtists', params: {gene: artist, id: artist.name}}"> About artist </router-link>
-             </div>
-             </div>
        </div>
        </div>
     </div>
@@ -36,9 +27,9 @@ export default {
         Nav,
     },
     methods: {
-        ...mapActions(['fetchSimilarArtists','fetchArtists', 'getUser',]),
-        fetchBois(){
-            ([...this.user.artists.map(artist => artist.similar_artists), ...this.user.genre.map(genre => genre.artists)]).map(artist => {
+        ...mapActions(['fetchArtists', 'getUser',]),
+         fetchBois(){
+             ([...this.user.genre.map(genre => genre.artists), ...this.user.artists.map(artist => artist.similar_artists)]).map(artist =>  {
                 this.fetchArtists(artist)
             })
         }
@@ -46,15 +37,13 @@ export default {
     computed: mapGetters(['user', 'artists', 'exploreArtists', 'similarArtists']),
       async created(){
         await this.getUser(localStorage.getItem('token'))
-        this.fetchBois()
+         this.fetchBois()
         },
         mounted(){
           
         },
         updated(){
-            this.user.genre.map(genre => {
-                this.fetchArtists(genre.artists)
-         })
+            this.fetchBois()
         }
 }
 </script>

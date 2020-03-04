@@ -3,6 +3,7 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1Ympl
 const state= {
     genes:[],
     artists:[],
+    artworks: [],
     genreArtists: [],
     exploreArtists: [],
     exploreSimilarArtists: [],
@@ -19,7 +20,8 @@ const getters={
     similarArtists: (state) => state.similarArtists,
     exploreSimilarArtists: (state) => state.exploreSimilarArtists,
     readGenre: (state) => state.readGenre,
-    readArtist: (state) => state.readArtist
+    readArtist: (state) => state.readArtist,
+    artworks : (state) => state.artworks
 }
 
 const actions = {
@@ -34,6 +36,17 @@ const actions = {
         .then(res =>  res.json())
         .then(genes => commit('addGenes', genes._embedded.genes))
     },
+    async fetchArtworks({commit}){
+      await fetch(`https://api.artsy.net/api/artworks?size=100`,{
+          method: 'GET',
+          headers: {
+            'X-Xapp-Token': xappToken,
+            'Accept': 'application/vnd.artsy-v2+json'
+          }
+        })
+      .then(res =>  res.json())
+      .then(artwork => commit('addArtwork', artwork._embedded.artworks))
+  },
     async fetchAllArtists({commit}, count){
         await fetch(`https://api.artsy.net/api/artists?size=${count}`,{
             method: 'GET',
@@ -73,8 +86,8 @@ const actions = {
              .then(res =>  res.json())
              .then(artists => commit('addArtists', artists._embedded.artists))
 },
-    fetchArtists({commit}, url){
-        fetch(url, {
+    async fetchArtists({commit}, url){
+        await fetch(url, {
             method: 'GET',
             headers: {
               'X-Xapp-Token': xappToken,
@@ -84,17 +97,6 @@ const actions = {
         .then(res => res.json())
         .then(artists => commit('addExploreArtists', artists._embedded.artists))
     },
-    fetchSimilarArtists({commit}, url){
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          'X-Xapp-Token': xappToken,
-          'Accept': 'application/vnd.artsy-v2+json'
-        }
-    })
-    .then(res => res.json())
-    .then(artists => commit('addExploreArtists', artists._embedded.artists))
-    }
 }
 
 const mutations= {
@@ -103,7 +105,8 @@ const mutations= {
     addGenreArtists: (state, genes) => state.genreArtists = genes,
     addExploreArtists: (state, artists) => artists.map(artist => !state.exploreArtists.map(artist=>artist.id).includes(artist.id) ? state.exploreArtists.push(artist) : null),
     addReadData: (state, genre) => state.readGenre = genre,
-    addReadArtist: (state, artist) => state.readArtist = artist
+    addReadArtist: (state, artist) => state.readArtist = artist,
+    addArtwork: (state, artwork) => state.artworks = artwork
 }
 
 export default {

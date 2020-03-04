@@ -1,6 +1,6 @@
 <template>
     <div class="sticky" id="header-div">
-        <h1>Artify</h1>
+        <h1 id='main-title'>Artify</h1>
             <Title v-if="isLoggedIn"/>
             <div id="login-header" v-if="hideLogin && !isLoggedIn" @click="toggleHideLogin" >
                 <h1 >Login</h1>
@@ -27,6 +27,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
+  #main-title{
+      font-family: 'Fredericka the Great', cursive;
+      font-size: 45px;
+      margin-bottom: 0px;
+      margin-top: 10px;
+  }
   #hide{
         display: none;
     }
