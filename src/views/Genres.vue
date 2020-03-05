@@ -43,7 +43,7 @@ export default {
         handleClick(gene, user){
            if (!user.genre.map(genre => genre.name).includes(gene.name)){
                 this.addSelectedGene(gene)
-                fetch('http://localhost:9001/genres',{
+                fetch('https://artify-backend.herokuapp.com/genres',{
                     method: 'POST',
                     headers:{
                         'content-type': 'application/json'
@@ -59,7 +59,7 @@ export default {
                         .then(console.log)
            } else{
                this.removeSelectedGene(gene)
-               fetch(`http://localhost:9001/genres`,{
+               fetch(`https://artify-backend.herokuapp.com/genres`,{
                    method: 'DELETE',
                    headers:{
                        'content-type': 'application/json'

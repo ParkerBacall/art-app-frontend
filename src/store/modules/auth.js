@@ -16,7 +16,7 @@ const getters={
 const actions={
      async getUser({commit}, token){
 
-       await fetch('http://localhost:9001/users',{
+       await fetch('https://artify-backend.herokuapp.com/users',{
             method: 'GET',
             headers:{
                 authorization: `Bearer ${token}`,

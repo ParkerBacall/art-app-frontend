@@ -41,7 +41,7 @@ export default {
         handleClick(artist, user){
             if (!user.artists.map(artist => artist.name).includes(artist.name)){
             this.addSelectedArtist(artist)
-            fetch('http://localhost:9001/artists',{
+            fetch('https://artify-backend.herokuapp.com/artists',{
                     method: 'POST',
                     headers:{
                         'content-type': 'application/json'
@@ -59,7 +59,7 @@ export default {
                 }
                 else{
                 this.removeSelectedArtist(artist)
-                fetch(`http://localhost:9001/artists`,{
+                fetch(`https://artify-backend.herokuapp.com/artists`,{
                    method: 'DELETE',
                    headers:{
                        'content-type': 'application/json'

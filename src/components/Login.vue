@@ -41,7 +41,7 @@ export default {
       },
       handleSubmit(event){
         event.preventDefault()
-        fetch('http://localhost:9001/login', {
+        fetch('https://artify-backend.herokuapp.com/login', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
