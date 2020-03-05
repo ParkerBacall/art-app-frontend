@@ -22,7 +22,7 @@
             {{artist.name}}
             </h3>
             <div >
-                <router-link :to="{ name: 'ReadArtistsFromArtists', params: {gene: artist, id: artist.name}}"> About Arist </router-link>
+                <router-link :to="{ name: 'ReadArtists', params: {gene: artist, id: artist.name}}"> About Arist </router-link>
             </div>
            
         </div>
@@ -34,13 +34,13 @@
 import Nav from '../components/Nav'
 import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
-    name: 'ReadArtists',
+    name: 'ReadArtistsFromArtists',
     components: {
         Nav
         },
         methods:{
             ...mapMutations(['addReadArtist', 'addSimilarArtists']),
-            ...mapActions(['getUser']),  
+            ...mapActions(['getUser']),
         },
         computed: mapGetters(['readArtist', 'similarArtists']),
     mounted(){
@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
     #artist-info{
+        margin-top: 100px;
         margin: 40px;
         padding: 15px;
         box-shadow: 0px 0px 4px #666;

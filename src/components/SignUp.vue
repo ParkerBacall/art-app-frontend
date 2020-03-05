@@ -84,6 +84,8 @@ export default {
       position: absolute;
       display: flex;
       justify-content: center;
+      width: 74%;
+    
       
     #sign-up-panel{
        margin-top: 6%;
@@ -91,7 +93,7 @@ export default {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        width: 900px;
+        width: 100%;
         box-shadow: 0px 0px 5px #666;
         padding: 10px;
         background-color: white;

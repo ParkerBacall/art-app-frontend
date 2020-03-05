@@ -15,7 +15,7 @@ export default {
     Header,    
   },
   methods: {
-    ...mapActions(['getUser', 'fetchGenes', 'fetchArtists']),
+    ...mapActions(['getUser', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
     ...mapMutations(['toggleLogin', 'toggleHideLogin', 'setSelectedGenes']),
     toggleBaseState(){
       this.toggleLogin()
@@ -35,6 +35,7 @@ export default {
    },
     mounted(){
       this.fetchGenes(70)
+      this.fetchAllArtists(70)
    }
   
 

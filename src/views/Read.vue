@@ -10,7 +10,8 @@
             <div id="grid-header">
                 <h2>Artists:</h2>
             </div>
-        <div @click="logInfo(gene)" v-for="gene in genreArtists" :key="gene.id" id ="artist">
+        <div @click="handleClick(gene, user)" v-for="gene in genreArtists" :key="gene.id" 
+        :id="user.artists.map(artist => artist.name).includes(gene.name) ? 'selected' : 'artist'">
             <img :src = "gene._links.thumbnail.href"/>
             <h3>
             {{gene.name}}
@@ -32,14 +33,46 @@ export default {
         Nav
         },
         methods:{
-             ...mapActions(['getUser']),
+             ...mapActions(['getUser', 'addSelectedGene', 'removeSelectedGene']),
              ...mapMutations(['addReadData','addGenreArtists','toggleLogin', 'toggleHideLogin']),
             toggleBaseState(){
             this.toggleLogin()
             this.toggleHideLogin()
-            }
+            },
+              handleClick(gene, user){
+           if (!user.genre.map(genre => genre.name).includes(gene.name)){
+                this.addSelectedGene(gene)
+                fetch('http://localhost:9001/artists',{
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify ({
+                        name: gene.name, 
+                        artworks: gene._links.artworks.href,
+                        artists: gene._links.artists.href,
+                        user_id: user.id
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(console.log)
+           } else{
+               this.removeSelectedGene(gene)
+               fetch(`http://localhost:9001/artists`,{
+                   method: 'DELETE',
+                   headers:{
+                       'content-type': 'application/json'
+                   },
+                   body: JSON.stringify ({name: gene.name, user_id: user.id})
+               })
+               .then(res => res.json())
+               .then(console.log)
+           }
+
+        }
+            
         },
-        computed: mapGetters(['genreArtists', 'readGenre']),
+        computed: mapGetters(['genreArtists', 'readGenre', 'user']),
     mounted(){
         this.getUser(localStorage.getItem('token'))
         this.addReadData(this.$route.params.gene)    
@@ -57,6 +90,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+        #selected{
+            width:20%;
+            height:20%;
+            padding: 10px;
+            margin: 10px;
+            background-color: #666;
+            box-shadow: 0px 0px 4px #666
+        }
     h1{
         padding-top: 15px;
     }
@@ -91,5 +133,8 @@ export default {
                 
             }
     }
+      #artist:hover{
+            background-color: #666
+        }
             
 </style>

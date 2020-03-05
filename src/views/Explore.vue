@@ -39,11 +39,9 @@ export default {
         await this.getUser(localStorage.getItem('token'))
          this.fetchBois()
         },
-        mounted(){
-          
-        },
         updated(){
             this.fetchBois()
+             
         }
 }
 </script>

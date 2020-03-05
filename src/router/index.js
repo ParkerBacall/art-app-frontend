@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Read from '../views/Read'
 import ReadArtists from '../views/ReadArtists'
+import ReadArtistsFromArtists from '../views/ReadArtistsFromArtists'
 import Explore from '../views/Explore'
 import Genres from '../views/Genres'
 import Artists from '../views/Artists'
@@ -45,6 +46,11 @@ const routes = [
     path: '/artists/:id',
     name: 'ReadArtists',
     component: ReadArtists
+  },
+  {
+    path: '/artists/:id',
+    name: 'ReadArtistsFromArtists',
+    component: ReadArtistsFromArtists
   }
 ]
 

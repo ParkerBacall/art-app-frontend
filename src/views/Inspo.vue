@@ -1,12 +1,18 @@
 <template>
     <div>
         <Nav/>
-        {{inspiration.category}}
-        {{inspiration.additional_information}}
-        {{inspiration.dimensions.in.text}}
-        {{inspiration.date}}
-        {{inspiration.medium}}
-        <img :src='inspiration._links.thumbnail.href'/>
+        <div id="artwork-div">
+            <div id="info-div">
+                <p>{{inspiration.category}}
+                {{inspiration.additional_information}}</p>
+                {{inspiration.dimensions.in.text}}
+                {{inspiration.medium}}
+                 {{inspiration.date}}
+            </div>
+            <div>
+            <img :src='inspiration._links.thumbnail.href'/>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -34,5 +40,15 @@ export default {
 </script>
 
 <style lang="scss">
-    
+    #artwork-div{
+        padding: 20px;
+        margin: 20px;
+        box-shadow: 0px 0px 4px #666;
+        display: flex;
+        justify-content: space-between;
+        #info-div{
+            padding: 20px;
+            width: 50%;
+        }
+    }
 </style>

@@ -3,6 +3,7 @@ const state={
     isLoggedIn: false,
     hideSignUp: true,
     user: {},
+    test: true
 }
 
 const getters={
@@ -38,7 +39,7 @@ const mutations={
     removeSelectedGene: (state, gene) => state.user.genre = state.user.genre.filter(selectedGene => gene.name !== selectedGene.name),
     addSelectedArtist: (state, selectedArtist) => state.user.artists.unshift(selectedArtist),
     removeSelectedArtist: (state, artist) => state.user.artists = state.user.artists.filter(selectedArtist => artist.name !== selectedArtist.name),
-
+    toggleTest: (state) => state.test = !state.test
 }
 
 

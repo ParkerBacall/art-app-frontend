@@ -83,7 +83,6 @@ export default {
   
      mounted(){
         this.getUser(localStorage.getItem('token'))
-       this.fetchAllArtists(70)
     },
     
 }

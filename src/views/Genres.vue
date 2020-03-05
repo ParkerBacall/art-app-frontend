@@ -128,6 +128,6 @@ export default {
         }
         #artwork:hover{
             background-color: #666
-        }
+        } 
     
 </style>

@@ -106,7 +106,8 @@ const mutations= {
     addExploreArtists: (state, artists) => artists.map(artist => !state.exploreArtists.map(artist=>artist.id).includes(artist.id) ? state.exploreArtists.push(artist) : null),
     addReadData: (state, genre) => state.readGenre = genre,
     addReadArtist: (state, artist) => state.readArtist = artist,
-    addArtwork: (state, artwork) => state.artworks = artwork
+    addArtwork: (state, artwork) => state.artworks = artwork,
+    addSimilarArtists: (state, artists) => state.similarArtists = artists
 }
 
 export default {
