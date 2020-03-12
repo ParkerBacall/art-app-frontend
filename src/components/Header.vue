@@ -26,14 +26,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
-  #main-title{
-      font-family: 'Fredericka the Great', cursive;
-      font-size: 45px;
-      margin-bottom: 0px;
-      margin-top: 10px;
-  }
+<style lang="scss" >
+
   #hide{
         display: none;
     }

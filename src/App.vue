@@ -47,4 +47,13 @@ export default {
 *{
   font-family: 'Barlow', ;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
+  #main-title{
+      font-family: 'Fredericka the Great';
+      font-size: 45px;
+      margin-bottom: 0px;
+      margin-top: 10px;
+  }
+
 </style>
