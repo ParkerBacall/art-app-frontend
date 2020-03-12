@@ -41,6 +41,7 @@ export default {
             cursor: pointer;
         }
     }
+  
 
 
     .sticky{

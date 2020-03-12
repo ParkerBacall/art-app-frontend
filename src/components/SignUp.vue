@@ -51,7 +51,6 @@ export default {
       },
       async handleSubmit(event){
         event.preventDefault()
-        console.log('1')
         fetch('https://artify-backend.herokuapp.com/users', {
             method: 'POST',
             headers: {

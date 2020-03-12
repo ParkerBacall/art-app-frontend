@@ -52,7 +52,7 @@ export default {
   #main-title{
       font-family: 'Fredericka the Great';
       font-size: 45px;
-      margin-bottom: 0px;
+      margin-bottom: 17px;
       margin-top: 10px;
   }
 
