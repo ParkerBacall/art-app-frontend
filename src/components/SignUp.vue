@@ -83,7 +83,7 @@ export default {
       position: absolute;
       display: flex;
       justify-content: center;
-      width: 74%;
+      width: 72%;
     
       
     #sign-up-panel{
@@ -99,10 +99,12 @@ export default {
         #header-div{
           width: 100%;
           display: flex;
+          background-color: white;
+          box-shadow: none;
           justify-content: center;
         }
         input{
-          width: 100%;
+          width: 90%;
           height: 45px;
           margin: 10px;
         }
