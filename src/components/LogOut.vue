@@ -33,4 +33,7 @@ export default {
             cursor: pointer;
     }
 
+    h1{
+        font-size: 3vh;
+    }
 </style>

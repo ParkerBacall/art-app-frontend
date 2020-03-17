@@ -68,7 +68,8 @@ export default {
         display: flex;
         justify-content: space-between;
         img{
-                width: 15%;
+                width: 150px;
+                height: 150px;
                 padding-right: 20px;
         }
     }

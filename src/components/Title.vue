@@ -23,4 +23,7 @@ export default {
         display: flex;
         justify-content: center;
     }
+    h2{
+        font-size: 2.2vw;
+    }
 </style>

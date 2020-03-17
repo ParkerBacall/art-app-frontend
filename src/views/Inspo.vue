@@ -50,5 +50,10 @@ export default {
             padding: 20px;
             width: 50%;
         }
+          img{
+                width: 150px;
+                height: 150px;
+                padding-right: 20px;
+        }
     }
 </style>
