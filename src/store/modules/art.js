@@ -1,4 +1,3 @@
-let xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI1ZTU4NDFmOGViOWE2ODAwMTIwODJhZjQiLCJleHAiOjE1ODQ2NTY4MjgsImlhdCI6MTU4NDA1MjAyOCwiYXVkIjoiNWU1ODQxZjhlYjlhNjgwMDEyMDgyYWY0IiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjVlNmFiNzNjYmEzMjE3MDAwZTYwYTJmZCJ9.Z41l49vRa_YneaMUtdxECUm4kwOcxXxZGvlp3DQFnrs'
 
 const state= {
     genes:[],
@@ -9,7 +8,8 @@ const state= {
     exploreSimilarArtists: [],
     similarArtists: [],
     readGenre: {},
-    readArtist: {}
+    readArtist: {},
+    xappToken: ''
 }
 
 const getters={
@@ -21,11 +21,12 @@ const getters={
     exploreSimilarArtists: (state) => state.exploreSimilarArtists,
     readGenre: (state) => state.readGenre,
     readArtist: (state) => state.readArtist,
-    artworks : (state) => state.artworks
+    artworks : (state) => state.artworks,
+    xappToken : (state) => state.xappToken
 }
 
 const actions = {
-  async fetchAndCacheToken(){
+  async fetchAndCacheToken({commit}){
    await fetch('https://api.artsy.net/api/tokens/xapp_token?client_id=83b52175d463d48945d1&client_secret=4a43c2ad60ff8d57d42b67e24e450c8d',{
       method: 'POST',
       headers: {
@@ -34,8 +35,7 @@ const actions = {
     })
     .then(res=>res.json())
     .then(res => {
-      xappToken = res.token
-      console.log(res)
+      commit('setXappToken', res.token)
       var expiresAt = new Date(res.expires_at).getTime()
       setTimeout(() => this.fetchAndCacheToken(), (expiresAt - 1000) - Date.now())
     })
@@ -45,7 +45,7 @@ const actions = {
         await fetch(`https://api.artsy.net/api/genes?size=${count}`,{
             method: 'GET',
             headers: {
-              'X-Xapp-Token': xappToken,
+              'X-Xapp-Token': state.xappToken,
               'Accept': 'application/vnd.artsy-v2+json'
             }
           })
@@ -56,7 +56,7 @@ const actions = {
       await fetch(`https://api.artsy.net/api/artworks?size=100`,{
           method: 'GET',
           headers: {
-            'X-Xapp-Token': xappToken,
+            'X-Xapp-Token': state.xappToken,
             'Accept': 'application/vnd.artsy-v2+json'
           }
         })
@@ -67,7 +67,7 @@ const actions = {
         await fetch(`https://api.artsy.net/api/artists?size=${count}`,{
             method: 'GET',
             headers: {
-              'X-Xapp-Token': xappToken,
+              'X-Xapp-Token': state.xappToken,
               'Accept': 'application/vnd.artsy-v2+json'
             }
           })
@@ -81,7 +81,7 @@ const actions = {
             fetch(`https://api.artsy.net/api/genes?size=${count}`,{
             method: 'GET',
             headers: {
-              'X-Xapp-Token': xappToken,
+              'X-Xapp-Token': state.xappToken,
               'Accept': 'application/vnd.artsy-v2+json'
             }
         })
@@ -95,7 +95,7 @@ const actions = {
             fetch(`https://api.artsy.net/api/artists?size=${count}`,{
             method: 'GET',
             headers: {
-              'X-Xapp-Token': xappToken,
+              'X-Xapp-Token': state.xappToken,
               'Accept': 'application/vnd.artsy-v2+json'
             }
         })
@@ -106,7 +106,7 @@ const actions = {
         await fetch(url, {
             method: 'GET',
             headers: {
-              'X-Xapp-Token': xappToken,
+              'X-Xapp-Token': state.xappToken,
               'Accept': 'application/vnd.artsy-v2+json'
             }
         })
@@ -123,8 +123,9 @@ const mutations= {
     addReadData: (state, genre) => state.readGenre = genre,
     addReadArtist: (state, artist) => state.readArtist = artist,
     addArtwork: (state, artwork) => state.artworks = artwork,
-    addSimilarArtists: (state, artists) => state.similarArtists = artists
-}
+    addSimilarArtists: (state, artists) => state.similarArtists = artists,
+    setXappToken: (state, token) => state.xappToken = token
+  }
 
 export default {
     state,

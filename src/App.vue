@@ -34,9 +34,9 @@ export default {
       this.checkLoggedin()
    },
     async mounted(){
-      this.fetchAndCacheToken()
-      await this.fetchGenes(70)
-      await this.fetchAllArtists(70)
+      await this.fetchAndCacheToken()
+       this.fetchGenes(70)
+       this.fetchAllArtists(70)
    }
   
 
