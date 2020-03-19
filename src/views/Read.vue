@@ -72,14 +72,14 @@ export default {
         }
             
         },
-        computed: mapGetters(['genreArtists', 'readGenre', 'user']),
+        computed: mapGetters(['genreArtists', 'readGenre', 'user', 'xappToken']),
     mounted(){
         this.getUser(localStorage.getItem('token'))
         this.addReadData(this.$route.params.gene)    
         fetch(this.$route.params.gene._links.artists.href, {
              method: 'GET',
             headers: {
-              'X-Xapp-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI1ZTU4NDFmOGViOWE2ODAwMTIwODJhZjQiLCJleHAiOjE1ODQ2NTY4MjgsImlhdCI6MTU4NDA1MjAyOCwiYXVkIjoiNWU1ODQxZjhlYjlhNjgwMDEyMDgyYWY0IiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjVlNmFiNzNjYmEzMjE3MDAwZTYwYTJmZCJ9.Z41l49vRa_YneaMUtdxECUm4kwOcxXxZGvlp3DQFnrs',
+              'X-Xapp-Token': this.xappToken,
               'Accept': 'application/vnd.artsy-v2+json'
             }
           })
