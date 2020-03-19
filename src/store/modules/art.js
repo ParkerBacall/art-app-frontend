@@ -1,4 +1,4 @@
-const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI1ZTU4NDFmOGViOWE2ODAwMTIwODJhZjQiLCJleHAiOjE1ODQ2NTY4MjgsImlhdCI6MTU4NDA1MjAyOCwiYXVkIjoiNWU1ODQxZjhlYjlhNjgwMDEyMDgyYWY0IiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjVlNmFiNzNjYmEzMjE3MDAwZTYwYTJmZCJ9.Z41l49vRa_YneaMUtdxECUm4kwOcxXxZGvlp3DQFnrs'
+let xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI1ZTU4NDFmOGViOWE2ODAwMTIwODJhZjQiLCJleHAiOjE1ODQ2NTY4MjgsImlhdCI6MTU4NDA1MjAyOCwiYXVkIjoiNWU1ODQxZjhlYjlhNjgwMDEyMDgyYWY0IiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjVlNmFiNzNjYmEzMjE3MDAwZTYwYTJmZCJ9.Z41l49vRa_YneaMUtdxECUm4kwOcxXxZGvlp3DQFnrs'
 
 const state= {
     genes:[],
@@ -25,6 +25,22 @@ const getters={
 }
 
 const actions = {
+  async fetchAndCacheToken(){
+   await fetch('https://api.artsy.net/api/tokens/xapp_token?client_id=83b52175d463d48945d1&client_secret=4a43c2ad60ff8d57d42b67e24e450c8d',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application-json'
+      }
+    })
+    .then(res=>res.json())
+    .then(res => {
+      xappToken = res.token
+      console.log(res)
+      var expiresAt = new Date(res.expires_at).getTime()
+      setTimeout(() => this.fetchAndCacheToken(), (expiresAt - 1000) - Date.now())
+    })
+    },
+    
      async fetchGenes({commit}, count){
         await fetch(`https://api.artsy.net/api/genes?size=${count}`,{
             method: 'GET',

@@ -15,7 +15,7 @@ export default {
     Header,    
   },
   methods: {
-    ...mapActions(['getUser', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
+    ...mapActions(['fetchAndCacheToken', 'getUser', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
     ...mapMutations(['toggleLogin', 'toggleHideLogin', 'setSelectedGenes']),
     toggleBaseState(){
       this.toggleLogin()
@@ -33,9 +33,10 @@ export default {
     created() {
       this.checkLoggedin()
    },
-    mounted(){
-      this.fetchGenes(70)
-      this.fetchAllArtists(70)
+    async mounted(){
+      this.fetchAndCacheToken()
+      await this.fetchGenes(70)
+      await this.fetchAllArtists(70)
    }
   
 
