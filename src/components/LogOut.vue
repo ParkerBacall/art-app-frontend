@@ -34,6 +34,6 @@ export default {
     }
 
     h1{
-        font-size: 3vh;
+        font-size: 25px;
     }
 </style>
