@@ -6,6 +6,7 @@
          </div>
          </div>
         <h1>login</h1>
+        <ErrorMessage v-if="this.errorMessage"/>
         <form @submit='handleSubmit'>
         <input v-model="user.email" type="text" placeholder="E-mail">
         <input v-model="user.password" type="password" placeholder="Password">
@@ -20,8 +21,12 @@
 
 <script>
 import {mapGetters, mapActions, mapMutations} from 'vuex'
+import ErrorMessage from './ErrorMessage'
 export default {
     name: 'Login',
+    components: {
+        ErrorMessage
+    },
      data(){
         return{
             user:{
@@ -32,7 +37,7 @@ export default {
     },
     methods: {
       ...mapActions(["postLogin", "getUser"]),
-      ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin", 'toggleHideSignUp']),
+      ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin", 'toggleHideSignUp', 'sendErrorMessage']),
       async holyFuckinShit(token){
           await this.getUser(token)
           localStorage.setItem('token', token)
@@ -52,7 +57,7 @@ export default {
         .then(res => { if(res.token){
             this.holyFuckinShit(res.token)
         } else{
-            console.log(res.error)
+            this.sendErrorMessage(res.error)
         }
         })
       },
@@ -61,7 +66,7 @@ export default {
           this.toggleHideSignUp()
       }
     },
-    computed: mapGetters(["hideLogin"])
+    computed: mapGetters(["hideLogin", 'errorMessage'])
    
 }
 </script>
