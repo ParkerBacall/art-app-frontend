@@ -1,17 +1,22 @@
 <template>
     <div>
-        <h1>bad request</h1>
+        <h3>{{errorMessage}}</h3>
     </div>
 </template>
 
 <script>
-// import {mapGetters, mapActions, mapMutations} from 'vuex'
+import {mapGetters} from 'vuex'
 
     export default {
-        //  computed: mapGetters([ 'errorMessage'])
+         computed: mapGetters([ 'errorMessage'])
     }
 </script>
 
 <style lang="scss" scoped>
-
+    div{
+        color: red;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 </style>
