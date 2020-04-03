@@ -35,7 +35,7 @@ export default {
     methods: {
       ...mapActions(["postLogin", "getUser"]),
       ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin", 'toggleHideSignUp', 'sendErrorMessage', '']),
-      async holyFuckinShit(token){
+      async loginFunctions(token){
           await this.getUser(token)
           localStorage.setItem('token', token)
           this.toggleLogin()
@@ -52,7 +52,7 @@ export default {
         })
         .then(res => res.json())
         .then(res => { if(res.token){
-            this.holyFuckinShit(res.token)
+            this.loginFunctions(res.token)
         } else{
             alert(res.error)
         }

@@ -35,16 +35,17 @@ export default {
       async LoginFunctions(token){
       await this.first(token)
       localStorage.setItem("token", token)
-        this.toggleLogin()
+      this.toggleLogin()
         this.toggleHideLogin()
         this.toggleHideSignUp()
         this.second()
       },
       first(token){
         this.getUser(token)
+        
       },
       second(){
-        this.$router.push('/genres')
+        this.$router.push('/genres')  
       },
       handleClick(){
         this.toggleHideSignUp()
@@ -59,7 +60,13 @@ export default {
             body: JSON.stringify(this.user)
         })
         .then(res => res.json())
-        .then(res=> this.LoginFunctions(res.token))
+        .then(res=> {
+          if (res.token){
+          this.LoginFunctions(res.token)
+          } else{
+            alert(res.error)
+          }
+          })
       },
     }
 }
