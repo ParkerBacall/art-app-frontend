@@ -12,7 +12,6 @@ const getters={
     user: (state) => state.user,
     hideLogin: (state) => state.hideLogin,
     hideSignUp: (state) => state.hideSignUp,
-    errorMessage: (state) => state.errorMessage
 }
 
 const actions={
@@ -42,7 +41,7 @@ const mutations={
     addSelectedArtist: (state, selectedArtist) => state.user.artists.unshift(selectedArtist),
     removeSelectedArtist: (state, artist) => state.user.artists = state.user.artists.filter(selectedArtist => artist.name !== selectedArtist.name),
     toggleTest: (state) => state.test = !state.test,
-    sendErrorMessage: (state, message) => state.errorMessage = message
+   
 }
 
 
