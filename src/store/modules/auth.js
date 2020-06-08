@@ -2,7 +2,7 @@ const state={
     hideLogin: true,
     isLoggedIn: false,
     hideSignUp: true,
-    user: {},
+    user: {name: "placeholder", artists: [], genre: []},
     test: true,
     errorMessage: null
 }

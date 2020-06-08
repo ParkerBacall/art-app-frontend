@@ -7,7 +7,7 @@
          <FilterGenreCount />
         <div id='artwork-grid'>
         <div @click="handleClick(gene, user)" 
-        :id="genes.map(genre => genre.name).includes(gene.name) ? 'selected' : 'artwork'" 
+        :id="user.genre.map(genre => genre.name).includes(gene.name) ? 'selected' : 'artwork'" 
         v-for="gene in genes" 
         :key="gene.id">
             <img :src = "gene._links.thumbnail.href"/>
