@@ -6,19 +6,14 @@ import ReadArtistsFromArtists from '../views/ReadArtistsFromArtists'
 import Explore from '../views/Explore'
 import Genres from '../views/Genres'
 import Artists from '../views/Artists'
-import Home from '../views/Home'
 import Inspo from '../views/Inspo'
 
 Vue.use(VueRouter)
 
 const routes = [
+ 
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/genres',
     name: 'Genres',
     component: Genres
   },

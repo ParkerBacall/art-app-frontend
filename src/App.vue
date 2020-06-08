@@ -17,21 +17,9 @@ export default {
   methods: {
     ...mapActions(['fetchAndCacheToken', 'getUser', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
     ...mapMutations(['toggleLogin', 'toggleHideLogin', 'setSelectedGenes']),
-    toggleBaseState(){
-      this.toggleLogin()
-      this.toggleHideLogin()
-    },
-    checkLoggedin(){
-      localStorage.token
-      ?
-      this.toggleBaseState()
-      :
-      null
-      }
     },
    computed: mapGetters(['isLoggedIn', 'user', 'hideSignUp']),
     created() {
-      this.checkLoggedin()
    },
     async mounted(){
       await this.fetchAndCacheToken()

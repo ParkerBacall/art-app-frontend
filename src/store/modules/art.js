@@ -72,6 +72,7 @@ const actions = {
             }
           })
         .then(res =>  res.json())
+
         .then(artists => commit('addArtists', artists._embedded.artists))
     },
     filterGenreCount({commit}, event){
