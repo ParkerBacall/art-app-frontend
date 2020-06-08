@@ -39,7 +39,7 @@ export default {
           await this.getUser(token)
           localStorage.setItem('token', token)
           this.toggleLogin()
-          this.$router.push('/genres')
+          this.$router.push('/')
       },
       handleSubmit(event){
         event.preventDefault()
@@ -80,6 +80,7 @@ export default {
     }
 
     #hide{
+        position: absolute;
         display: flex;
         opacity: 0;
         justify-content: center;
@@ -119,10 +120,17 @@ export default {
     }
 
     #login-panel-container{
-        float: right;
-        padding-top: 120px;
+        float: center;
+        // padding-top: 120px;
+        // display: flex;
+        // justify-content: center;
+
     }
     #login-panel{
+        margin-top:120px;
+        margin-left: 50px;
+        position: absolute;
+        background-color: white;
         display: flex;
         opacity: 1;
         justify-content: center;

@@ -45,7 +45,7 @@ export default {
         
       },
       second(){
-        this.$router.push('/genres')  
+        this.$router.push('/')  
       },
       handleClick(){
         this.toggleHideSignUp()

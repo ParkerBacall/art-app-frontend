@@ -1,6 +1,8 @@
 <template>
   <div id="app">
      <Header/>
+     <Login v-if="!isLoggedIn" />
+     <Sign-up v-if="!hideSignUp"/>
      <router-view/>
   </div>
 </template>
@@ -8,11 +10,15 @@
 
 <script>
  import Header from "./components/Header"
+ import Login from "./components/Login"
+ import SignUp from "./components/SignUp"
  import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
   name: 'App',
   components: {
-    Header,    
+    Header, 
+    Login,
+    SignUp,
   },
   methods: {
     ...mapActions(['fetchAndCacheToken', 'getUser', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
@@ -44,6 +50,5 @@ export default {
       margin-bottom: 17px;
       margin-top: 10px;
   }
-
 
 </style>

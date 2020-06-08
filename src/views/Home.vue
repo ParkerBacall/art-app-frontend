@@ -1,7 +1,7 @@
 <template>
     <div>
         <Login v-if="!isLoggedIn"/>
-        <Sign-up v-if="!hideSignUp"/>
+        <Sign-up v-if="!isLoggedIn"/>
     </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     checkLoggedin(){
       localStorage.token
       ?
-      this.$router.push('/genres')
+      this.$router.push('/')
       :
       null
       }
