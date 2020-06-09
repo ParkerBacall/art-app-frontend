@@ -13,7 +13,6 @@ export default {
     methods: {
         ...mapMutations(['toggleLogin', 'toggleHideLogin', 'clearUser']),
         handleClick(){
-            this.$router.push('/')
             localStorage.removeItem('token')
             this.toggleLogin()
             this.toggleHideLogin()
