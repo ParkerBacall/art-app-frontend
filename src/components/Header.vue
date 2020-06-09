@@ -9,7 +9,10 @@
                 <h1>Sign Up</h1>
             </div>
             </div>
-            <LogOut v-if="isLoggedIn"/>
+            <div v-if="isLoggedIn" id="userOptions">
+                 <h1 v-if="isLoggedIn">Hello, {{user.full_name}}</h1>
+                 <LogOut v-if="isLoggedIn"/>     
+            </div>
     </div>
     
 </template>
@@ -24,7 +27,7 @@ export default {
         
     },
     methods: mapMutations(["toggleHideLogin", "toggleHideSignUp"]), 
-    computed: mapGetters(['hideLogin', 'isLoggedIn', 'hideSignUp']),
+    computed: mapGetters(['user','hideLogin', 'isLoggedIn', 'hideSignUp']),
 
 }
 </script>

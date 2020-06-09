@@ -32,7 +32,5 @@ export default {
             cursor: pointer;
     }
 
-    h1{
-        font-size: 25px;
-    }
+  
 </style>

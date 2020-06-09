@@ -26,6 +26,7 @@ export default {
     },
    computed: mapGetters(['isLoggedIn', 'user', 'hideSignUp']),
     created() {
+      
    },
     async mounted(){
       await this.fetchAndCacheToken()
