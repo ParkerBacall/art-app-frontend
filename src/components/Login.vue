@@ -39,7 +39,7 @@ export default {
           await this.getUser(token)
           localStorage.setItem('token', token)
           this.toggleLogin()
-          this.$router.push('/')
+        //   this.$router.push('/')
       },
       handleSubmit(event){
         event.preventDefault()

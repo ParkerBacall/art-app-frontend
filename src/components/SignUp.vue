@@ -35,7 +35,7 @@ export default {
       async LoginFunctions(token){
       await this.first(token)
       localStorage.setItem("token", token)
-      this.toggleLogin()
+        this.toggleLogin()
         this.toggleHideLogin()
         this.toggleHideSignUp()
         this.second()
