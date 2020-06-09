@@ -29,12 +29,18 @@ export default {
     methods: {
         ...mapActions(['fetchArtists', 'getUser',]),
          fetchBois(){
+             if (!this.isLoggedIn){
              ([...this.user.genre.map(genre => genre._links.artists.href), ...this.user.artists.map(artist => artist._links.similar_artists.href)]).map(artist =>  {
                 this.fetchArtists(artist)
             })
+             } else{
+                 ([...this.user.genre.map(genre => genre.artists), ...this.user.artists.map(artist => artist.similar_artists)]).map(artist =>  {
+                this.fetchArtists(artist)
+            })
+            }
         }
     },
-    computed: mapGetters(['user', 'artists', 'exploreArtists', 'similarArtists']),
+    computed: mapGetters(['isLoggedIn', 'user', 'artists', 'exploreArtists', 'similarArtists']),
       created(){
          this.fetchBois()
         },
