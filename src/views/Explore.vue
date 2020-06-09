@@ -29,20 +29,15 @@ export default {
     methods: {
         ...mapActions(['fetchArtists', 'getUser',]),
          fetchBois(){
-             ([...this.user.genre.map(genre => genre.artists), ...this.user.artists.map(artist => artist.similar_artists)]).map(artist =>  {
+             ([...this.user.genre.map(genre => genre._links.artists.href), ...this.user.artists.map(artist => artist._links.similar_artists.href)]).map(artist =>  {
                 this.fetchArtists(artist)
             })
         }
     },
     computed: mapGetters(['user', 'artists', 'exploreArtists', 'similarArtists']),
-      async created(){
-        await this.getUser(localStorage.getItem('token'))
+      created(){
          this.fetchBois()
         },
-        updated(){
-            this.fetchBois()
-             
-        }
 }
 </script>
 
