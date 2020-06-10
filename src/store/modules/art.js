@@ -124,7 +124,8 @@ const mutations= {
     addReadArtist: (state, artist) => state.readArtist = artist,
     addArtwork: (state, artwork) => state.artworks = artwork,
     addSimilarArtists: (state, artists) => state.similarArtists = artists,
-    setXappToken: (state, token) => state.xappToken = token
+    setXappToken: (state, token) => state.xappToken = token,
+    clearExplore: (state) => state.exploreArtists = []
   }
 
 export default {

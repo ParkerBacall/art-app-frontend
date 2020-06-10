@@ -11,12 +11,13 @@ import {mapMutations} from 'vuex'
 export default {
     name: "LogOut",
     methods: {
-        ...mapMutations(['toggleLogin', 'toggleHideLogin', 'clearUser']),
+        ...mapMutations(['clearExplore','toggleLogin', 'toggleHideLogin', 'clearUser']),
         handleClick(){
             localStorage.removeItem('token')
             this.toggleLogin()
             this.toggleHideLogin()
             this.clearUser()
+            this.clearExplore()
         }
     },
 }
