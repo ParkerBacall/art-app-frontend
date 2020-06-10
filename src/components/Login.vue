@@ -33,13 +33,18 @@ export default {
         }
     },
     methods: {
-      ...mapActions(["postLogin", "getUser"]),
+      ...mapActions(["fetchArtists","postLogin", "getUser"]),
       ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin", 'toggleHideSignUp', 'sendErrorMessage', '']),
+      addExplore(){
+          ([...this.user.genre.map(genre => genre.artists), ...this.user.artists.map(artist => artist.similar_artists)]).map(artist =>  {
+                console.log(artist)
+                // this.fetchArtists(artist)
+            })  
+      },
       async loginFunctions(token){
           await this.getUser(token)
           localStorage.setItem('token', token)
           this.toggleLogin()
-        //   this.$router.push('/')
       },
       handleSubmit(event){
         event.preventDefault()
@@ -63,7 +68,7 @@ export default {
           this.toggleHideSignUp()
       }
     },
-    computed: mapGetters(["hideLogin", 'errorMessage'])
+    computed: mapGetters(["user", "hideLogin", 'errorMessage'])
    
 }
 </script>
