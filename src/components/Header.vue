@@ -1,6 +1,7 @@
 <template>
     <div class="sticky" id="header-div">
         <h1 id='main-title'>Artify</h1>
+            <h3 v-if="!isLoggedIn">Welcome to artify! Login or create an account to save favorited artists and genres</h3>
             <div id="userOptions">
                 <div id="login-header" v-if="hideLogin && !isLoggedIn" @click="toggleHideLogin" >
                 <h1>Login</h1>
