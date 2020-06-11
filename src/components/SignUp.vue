@@ -31,21 +31,19 @@ export default {
         }
     },
     methods: {      
-    ...mapMutations(['toggleLogin','getUser', 'toggleHideLogin','toggleHideSignUp']),
+    ...mapMutations(['clearExplore','toggleLogin','getUser', 'toggleHideLogin','toggleHideSignUp']),
       async LoginFunctions(token){
       await this.first(token)
       localStorage.setItem("token", token)
         this.toggleLogin()
         this.toggleHideLogin()
         this.toggleHideSignUp()
-        this.second()
+        this.clearExplore()
+
       },
       first(token){
         this.getUser(token)
         
-      },
-      second(){
-        this.$router.push('/')  
       },
       handleClick(){
         this.toggleHideSignUp()
