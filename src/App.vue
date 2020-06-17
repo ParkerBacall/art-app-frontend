@@ -32,6 +32,7 @@ export default {
       await this.fetchAndCacheToken()
        this.fetchGenes(70)
        this.fetchAllArtists(70)
+       alert("Welcome to artify! Login or create an account to save favorited artists and genres")
    }
   
 
