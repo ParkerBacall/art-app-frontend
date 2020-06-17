@@ -38,8 +38,7 @@ export default {
         this.toggleLogin()
         this.toggleHideLogin()
         this.toggleHideSignUp()
-        this.clearExplore()
-
+        this.$router.push("/")
       },
       first(token){
         this.getUser(token)
