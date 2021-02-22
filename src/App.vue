@@ -35,6 +35,7 @@ export default {
       await this.fetchAndCacheToken()
        this.fetchGenes(70)
        this.fetchAllArtists(70)
+
    }
   
 
