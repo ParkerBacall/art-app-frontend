@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <WelcomeModal/>
      <Header/>
      <Login v-if="!isLoggedIn" />
      <Sign-up v-if="!hideSignUp"/>
@@ -9,6 +10,7 @@
 
 
 <script>
+ import WelcomeModal from "./components/WelcomeModal"
  import Header from "./components/Header"
  import Login from "./components/Login"
  import SignUp from "./components/SignUp"
@@ -17,6 +19,7 @@ export default {
   name: 'App',
   components: {
     Header, 
+    WelcomeModal,
     Login,
     SignUp,
   },
@@ -32,7 +35,6 @@ export default {
       await this.fetchAndCacheToken()
        this.fetchGenes(70)
        this.fetchAllArtists(70)
-       alert("Welcome to artify! Login or create an account to save favorited artists and genres")
    }
   
 
