@@ -55,7 +55,7 @@ export default {
                         })
                     })
                         .then(response => response.json())
-                        .then(console.log)
+                        // .then(console.log)
                 }
                 else{
                 this.removeSelectedArtist(artist)
@@ -67,7 +67,7 @@ export default {
                    body: JSON.stringify ({name: artist.name, user_id: user.id})
                })
                .then(res => res.json())
-               .then(console.log)
+            //    .then(console.log)
            }
         },
         handleRouterClick(e){

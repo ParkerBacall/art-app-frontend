@@ -56,7 +56,7 @@ export default {
                         })
                     })
                         .then(response => response.json())
-                        .then(console.log)
+                        // .then(console.log)
            } else{
                this.removeSelectedGene(gene)
                fetch(`https://artify-backend.herokuapp.com/genres`,{
@@ -67,7 +67,7 @@ export default {
                    body: JSON.stringify ({name: gene.name, user_id: user.id})
                })
                .then(res => res.json())
-               .then(console.log)
+            //    .then(console.log)
            }
 
         }

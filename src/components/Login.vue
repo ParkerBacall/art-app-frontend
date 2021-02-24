@@ -35,12 +35,12 @@ export default {
     methods: {
       ...mapActions(["fetchArtists","postLogin", "getUser"]),
       ...mapMutations(["loggedInUser", "toggleLogin", "toggleHideLogin", 'toggleHideSignUp', 'sendErrorMessage', '']),
-      addExplore(){
-          ([...this.user.genre.map(genre => genre.artists), ...this.user.artists.map(artist => artist.similar_artists)]).map(artist =>  {
-                console.log(artist)
-                // this.fetchArtists(artist)
-            })  
-      },
+    //   addExplore(){
+    //       ([...this.user.genre.map(genre => genre.artists), ...this.user.artists.map(artist => artist.similar_artists)]).map(artist =>  {
+    //             console.log(artist)
+    //             this.fetchArtists(artist)
+    //         })  
+    //   },
       async loginFunctions(token){
           await this.getUser(token)
           localStorage.setItem('token', token)
