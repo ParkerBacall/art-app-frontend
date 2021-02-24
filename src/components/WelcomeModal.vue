@@ -1,12 +1,15 @@
 <template>
-<div id="myModal" class="modal">
+<div class="welcome-modal" @click="closeModalWindow">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close"  @click="closeModal">&times;</span>
     <div class="modal-header-container">
     <h1>Welcome to Artify</h1>
     </div>
     <div class="modal-body-container">
-    <p>Some aspects of this page are currently under construction. Please feel free to browse around.</p>
+    <p class="modal-description">Some aspects of this page are currently under construction. Please feel free to browse around.</p>
+    <div class="modal-btn-container">
+       <button class="modal-btn" @click="closeModal">Ok</button>
+    </div>
     </div>
   </div>
 
@@ -14,15 +17,27 @@
 </template>
 
 <script>
-export default {
-    name: 'WelcomeModal'
-}
+  export default {
+      name: 'WelcomeModal',
 
+      methods:{
+      closeModalWindow(event){
+       const modal = document.querySelector('.welcome-modal')
+       if (event.target == modal){
+          modal.style.display="none"
+       }
+      },
+      closeModal(){
+        document.querySelector('.welcome-modal').style.display='none'
+      }
+   }
+  }
+  
 
 </script>
 
 <style>
-.modal {
+.welcome-modal {
   display: block; 
   position: fixed; 
   z-index: 1; 
@@ -51,7 +66,8 @@ export default {
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; 
-  padding: 20px;
+  padding:20px;
+  padding-bottom:40px;
   border: 1px solid #888;
   width: 80%; 
 
@@ -69,5 +85,33 @@ export default {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+.modal-body-container{
+  width:100%;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+.modal-description{
+  width:100%;
+  text-align: center;
+}
+.modal-btn-container{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+.modal-btn{
+  background-color:cadetblue;
+  border:none;
+  border-radius: 5px;
+  width:50px;
+  height:30px;
+}
+.modal-btn:hover{
+  cursor:pointer;
+  background-color:rgb(66,123,124);
+  
 }
 </style>
