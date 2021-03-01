@@ -6,7 +6,7 @@
     <h1>Welcome to Artify</h1>
     </div>
     <div class="modal-body-container">
-    <p class="modal-description">Some aspects of this page are currently under construction. Please feel free to browse around. Account functionality coming soon.</p>
+    <p class="modal-description">Click on an artist or genre to add it to your favorites. Navigate to explore to view a feed of artist curated personally for you! Additional functionality coming soon!</p>
     <div class="modal-btn-container">
        <button class="modal-btn" @click="closeModal">Ok</button>
     </div>
