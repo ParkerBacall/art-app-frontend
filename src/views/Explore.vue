@@ -1,6 +1,5 @@
 <template>
     <div>
-    <Nav/>
     <div id='title-div'>
         <h1>Explore</h1>
         </div>
@@ -20,11 +19,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Nav from '../components/Nav'
 export default {
     name: 'Explore',
     components: {
-        Nav,
     },
     methods: {
         ...mapActions(['fetchArtists', 'getUser',]),

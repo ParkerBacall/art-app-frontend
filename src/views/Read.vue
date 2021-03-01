@@ -1,7 +1,6 @@
 <template>
     <div>
         <Header/>
-         <Nav/>
        <div id='title-div'>
        <h1> {{readGenre.name}}</h1>
        </div>
@@ -24,13 +23,12 @@
 
 <script>
 import Header from '../components/Header'
-import Nav from '../components/Nav'
 import {mapActions, mapMutations, mapGetters} from 'vuex'
 export default {
     name: 'Read',
     components: {
         Header,
-        Nav
+        
         },
         methods:{
              ...mapActions(['getUser', 'addSelectedGene', 'removeSelectedGene']),

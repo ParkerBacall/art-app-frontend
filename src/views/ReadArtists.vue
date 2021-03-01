@@ -1,6 +1,5 @@
 <template>
     <div>
-       <Nav/>
        <div id="artist-info">
         <div>
        <h1> {{readArtist.name}}</h1>
@@ -31,12 +30,11 @@
 </template>
 
 <script>
-import Nav from '../components/Nav'
 import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
     name: 'ReadArtists',
     components: {
-        Nav
+        
         },
         methods:{
             ...mapMutations(['addReadArtist', 'addSimilarArtists']),

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Nav/>
         <div id='title-div'>
             <h1>Genres</h1>
         </div>
@@ -27,12 +26,11 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
 import FilterGenreCount from '../components/FilterGenreCount'
-import Nav from '../components/Nav'
 export default {
     name: 'Genres',
     components: {
         FilterGenreCount,
-        Nav
+        
 },
     methods: {
         ...mapActions(['fetchGenes', 'getUser']),

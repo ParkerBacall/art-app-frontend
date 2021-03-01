@@ -1,29 +1,23 @@
 <template>
     <div class="sticky" id="header-div">
         <h1 id='main-title'>Artify</h1>
-            <div id="userOptions">
-                <div id="login-header" v-if="hideLogin && !isLoggedIn" @click="toggleHideLogin" >
-                <h1>Login</h1>
-            </div>
-            <div id="login-header" v-if="hideLogin && !isLoggedIn" @click="toggleHideSignUp" >
-                <h1>Sign Up</h1>
-            </div>
-            </div>
-            <div v-if="isLoggedIn" id="userOptions">
-                 <h1 v-if="isLoggedIn">Hello, {{user.full_name}}</h1>
-                 <LogOut v-if="isLoggedIn"/>     
-            </div>
+         
+        <Nav/>  
+        <div class="user-div">   
+        <!-- <i class="far fa-user"></i> -->
+        </div>
+
     </div>
     
 </template>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import LogOut from './LogOut'
+import Nav from './Nav'
 export default {
     name: "Header",
     components: {
-        LogOut,
+        Nav,
         
     },
     methods: mapMutations(["toggleHideLogin", "toggleHideSignUp"]), 
@@ -34,10 +28,7 @@ export default {
 
 <style lang="scss" >
 
-    #userOptions{
-        display: flex;
-        justify-content: space-between;
-    }
+  
 
   #hide{
         display: none;
@@ -68,5 +59,13 @@ export default {
     .sticky + .content {
     padding-top: 102px;
     }
-
+    .user-div{
+    width: 211px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    }
+    .fa-user{
+        margin-right:40px;
+    }
 </style>

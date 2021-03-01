@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Nav/>
         <div id="artwork-div">
             <div id="info-div">
                 <p>{{inspiration.category}}
@@ -17,12 +16,11 @@
 </template>
 
 <script>
-import Nav from '../components/Nav'
 import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'Inspo',
     components: {
-        Nav
+        
     },
     methods: {
         ...mapActions(['fetchArtworks'])

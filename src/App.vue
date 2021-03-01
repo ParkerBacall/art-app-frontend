@@ -2,8 +2,8 @@
   <div id="app">
       <WelcomeModal/>
      <Header/>
-     <Login v-if="!isLoggedIn" />
-     <Sign-up v-if="!hideSignUp"/>
+      <div class="spacer">
+      </div>
      <router-view/>
   </div>
 </template>
@@ -12,16 +12,14 @@
 <script>
  import WelcomeModal from "./components/WelcomeModal"
  import Header from "./components/Header"
- import Login from "./components/Login"
- import SignUp from "./components/SignUp"
+
  import {mapMutations, mapGetters, mapActions} from 'vuex'
 export default {
   name: 'App',
   components: {
     Header, 
     WelcomeModal,
-    Login,
-    SignUp,
+   
   },
   methods: {
     ...mapActions(['fetchAndCacheToken', 'getUser', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
@@ -35,6 +33,14 @@ export default {
       await this.fetchAndCacheToken()
        this.fetchGenes(70)
        this.fetchAllArtists(70)
+
+        const plugin = document.createElement("script");
+    plugin.setAttribute(
+      "src",
+      "../assets/all.min.js"
+    );
+    plugin.async = true;
+    document.head.appendChild(plugin);
 
    }
   
@@ -55,5 +61,7 @@ export default {
       margin-bottom: 17px;
       margin-top: 10px;
   }
-
+.spacer{
+  height: 100px;
+}
 </style>

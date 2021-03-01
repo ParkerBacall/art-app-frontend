@@ -1,42 +1,42 @@
 <template>
 <div>
     <div v-if="this.$route.name==='Explore'" id='nav-div'>
-             <router-link to="/artists"> Artists </router-link>
-             <router-link to="/"> Genres </router-link>
-             <router-link to="/art-inspo-of-the-day"> Inspiration </router-link>
+             <router-link class="router-link" to="/artists"> Artists </router-link>
+             <router-link class="router-link" to="/"> Genres </router-link>
+             <router-link class="router-link" to="/art-inspo-of-the-day"> Inspiration </router-link>
     </div>
     <div v-if="this.$route.name==='Artists'" id='nav-div'>
-             <router-link to="/explore"> Explore </router-link>
-             <router-link to="/"> Genres </router-link>
-             <router-link to="/art-inspo-of-the-day"> Inspiration </router-link>
+             <router-link class="router-link" to="/explore"> Explore </router-link>
+             <router-link class="router-link" to="/"> Genres </router-link>
+             <router-link class="router-link" to="/art-inspo-of-the-day"> Inspiration </router-link>
     </div>
     <div v-if="this.$route.name==='Genres'" id='nav-div'>
-             <router-link to="/explore"> Explore </router-link>
-             <router-link to="/artists"> Artists </router-link>
-             <router-link to="/art-inspo-of-the-day"> Inspiration </router-link>
+             <router-link class="router-link" to="/explore"> Explore </router-link>
+             <router-link class="router-link" to="/artists"> Artists </router-link>
+             <router-link class="router-link" to="/art-inspo-of-the-day"> Inspiration </router-link>
     </div>
     <div v-if="this.$route.name==='Inspo'" id='nav-div'>
-             <router-link to="/explore"> Explore </router-link>
-             <router-link to="/artists"> Artists </router-link>
-             <router-link to="/"> Genres </router-link>
+             <router-link class="router-link" to="/explore"> Explore </router-link>
+             <router-link class="router-link" to="/artists"> Artists </router-link>
+             <router-link class="router-link" to="/"> Genres </router-link>
     </div>
     <div v-if="this.$route.name==='Read'" id='nav-div'>
-             <router-link to="/explore"> Explore </router-link>
-             <router-link to="/artists"> Artists </router-link>
-             <router-link to="/"> Genres </router-link>
-            <router-link to="/art-inspo-of-the-day"> Inspiration </router-link>
+             <router-link class="router-link" to="/explore"> Explore </router-link>
+             <router-link class="router-link" to="/artists"> Artists </router-link>
+             <router-link class="router-link" to="/"> Genres </router-link>
+            <router-link class="router-link" to="/art-inspo-of-the-day"> Inspiration </router-link>
     </div>
     <div v-if="this.$route.name==='ReadArtists'" id='nav-div'>
-             <router-link to="/explore"> Explore </router-link>
-             <router-link to="/artists"> Artists </router-link>
-             <router-link to="/"> Genres </router-link>
-            <router-link to="/art-inspo-of-the-day"> Inspiration </router-link>
+             <router-link class="router-link" to="/explore"> Explore </router-link>
+             <router-link class="router-link" to="/artists"> Artists </router-link>
+             <router-link class="router-link" to="/"> Genres </router-link>
+            <router-link class="router-link" to="/art-inspo-of-the-day"> Inspiration </router-link>
     </div>
     <div v-if="this.$route.name==='ReadArtistsFromArtists'" id='nav-div'>
-             <router-link to="/explore"> Explore </router-link>
-             <router-link to="/artists"> Artists </router-link>
-             <router-link to="/"> Genres </router-link>
-            <router-link to="/art-inspo-of-the-day"> Inspiration </router-link>
+             <router-link  class="router-link" to="/explore"> Explore </router-link>
+             <router-link class="router-link" to="/artists"> Artists </router-link>
+             <router-link class="router-link" to="/"> Genres </router-link>
+            <router-link class="router-link" to="/art-inspo-of-the-day"> Inspiration </router-link>
     </div>
     </div>
 </template>
@@ -49,8 +49,24 @@ export default {
 
 <style lang="scss" scoped>
     #nav-div{
-         padding-top: 90px;
+        
+         padding-top: 30px;
+         padding-bottom: 30px;
          display: flex;
-         justify-content: space-evenly;
+         justify-content: space-between;
+    }
+    .router-link{
+        padding:10px;
+        color:black;
+        font-size: 18px;
+        text-decoration: none;
+    }
+     .router-link:hover{
+        padding:10px;
+        color:black;
+    }
+     .router-link:hover{
+        padding:10px;
+        color:#3c6768;
     }
 </style>

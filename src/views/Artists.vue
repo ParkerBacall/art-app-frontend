@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Nav/>
         <div id='title-div'>
         <h1>Artists</h1>
         </div>
@@ -27,12 +26,10 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex'
-import Nav from '../components/Nav'
 import FilterArtistCount from '../components/FilterArtistCount'
 export default {
     name: "Artists",
     components: {
-        Nav,
         FilterArtistCount
     },
     methods: {
