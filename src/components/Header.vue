@@ -4,7 +4,7 @@
          
         <Nav/>  
         <div class="user-div">   
-        <i class="far fa-user"></i>
+        <!-- <i class="far fa-user"></i> -->
         </div>
 
     </div>
