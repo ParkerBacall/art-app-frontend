@@ -5,7 +5,7 @@
         </div>
        <div id='explore-grid'>
        <div id="explore" v-for="artist in exploreArtists" :key=artist.id>
-           <img :src="artist._links.thumbnail.href" alt=""/>
+           <img class="lazyload" data-expand="-10" :data-src="artist._links.thumbnail.href" alt=""/>
           <div id="h3-div">
           <h3>{{artist.name}}</h3>
           </div>

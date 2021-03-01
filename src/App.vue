@@ -33,14 +33,7 @@ export default {
       await this.fetchAndCacheToken()
        this.fetchGenes(70)
        this.fetchAllArtists(70)
-
-        const plugin = document.createElement("script");
-    plugin.setAttribute(
-      "src",
-      "../assets/all.min.js"
-    );
-    plugin.async = true;
-    document.head.appendChild(plugin);
+       
 
    }
   
@@ -48,11 +41,23 @@ export default {
 }
 </script>
 
+
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Barlow:500&display=swap');
 *{
   font-family: 'Barlow', ;
 }
+
+.lazyload,.lazyloading{
+  opacity:0!important;
+  
+  }
+
+.lazyloaded{
+  opacity:1;
+  transition: opacity .6s;
+  z-index:1;
+  }
 
 @import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
   #main-title{

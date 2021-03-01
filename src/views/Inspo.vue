@@ -9,7 +9,7 @@
                  {{inspiration.date}}
             </div>
             <div>
-            <img :src='inspiration._links.thumbnail.href'/>
+            <img class="lazyload" data-expand="-10" :data-src='inspiration._links.thumbnail.href'/>
             </div>
         </div>
     </div>

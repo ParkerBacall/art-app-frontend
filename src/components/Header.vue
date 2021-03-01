@@ -4,7 +4,7 @@
          
         <Nav/>  
         <div class="user-div">   
-        <!-- <i class="far fa-user"></i> -->
+        <i class="far fa-user"></i>
         </div>
 
     </div>
@@ -38,6 +38,7 @@ export default {
         display: flex;
         justify-content: space-between;
         box-shadow: 0px 0px 4px #666; 
+        z-index:99999999999999;
         #login-header:hover{
             color: #333;
             cursor: pointer;
@@ -68,4 +69,5 @@ export default {
     .fa-user{
         margin-right:40px;
     }
+
 </style>

@@ -11,7 +11,7 @@
             </div>
         <div @click="handleClick(gene, user)" v-for="gene in genreArtists" :key="gene.id" 
         :id="user.artists.map(artist => artist.name).includes(gene.name) ? 'selected' : 'artist'">
-            <img :src = "gene._links.thumbnail.href"/>
+            <img class="lazyload" :data-src = "gene._links.thumbnail.href"/>
             <h3>
             {{gene.name}}
             </h3>

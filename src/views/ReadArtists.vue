@@ -7,7 +7,7 @@
        <p>{{readArtist.gender}}</p>
        <p>{{readArtist.birthday}} - {{readArtist.deathday}}</p>
        </div>
-       <img :src=
+       <img class="lazyload" :data-src=
        readArtist._links.thumbnail.href
         alt="">
         </div>
@@ -16,7 +16,7 @@
                 <h2>Similar Artists:</h2>
             </div>
         <div v-for="artist in similarArtists" :key="artist.id" id ="artist">
-            <img :src = "artist._links.thumbnail.href"/>
+            <img class="lazyload" :data-src="artist._links.thumbnail.href"/>
             <h3>
             {{artist.name}}
             </h3>
