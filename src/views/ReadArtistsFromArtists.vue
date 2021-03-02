@@ -96,5 +96,22 @@ export default {
             }
             
     }
+    
+         @media only screen and (max-width: 600px) {
+             #artist-info{
+                margin:0px;
+                margin-top:40px;
+                 img{
+                        padding-right:0px;
+                    }
+             }
+                    #artists{
+                    #artist{
+                        width:35%;
+
+                    }
+                   
+                    }
+        }
             
 </style>

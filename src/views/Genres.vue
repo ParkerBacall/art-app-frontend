@@ -128,4 +128,12 @@ export default {
             background-color: #666
         } 
     
+        @media only screen and (max-width: 600px) {
+                    #artwork-grid{
+                    #artwork{
+                        width:35%;
+
+                    }
+                    }
+        }
 </style>

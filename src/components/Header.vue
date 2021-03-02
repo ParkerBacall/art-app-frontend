@@ -70,4 +70,14 @@ export default {
         margin-right:40px;
     }
 
+    @media only screen and (max-width: 600px) {
+ #header-div{
+     flex-direction: column;
+     #main-title{
+         text-align:center;
+         margin-bottom: 0px;
+     }
+ }
+}
+
 </style>

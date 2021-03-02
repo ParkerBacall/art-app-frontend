@@ -134,5 +134,13 @@ export default {
       #artist:hover{
             background-color: #666
         }
+           @media only screen and (max-width: 600px) {
+                    #artists{
+                    #artist{
+                        width:35%;
+
+                    }
+                    }
+        }
             
 </style>

@@ -44,13 +44,13 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Barlow:500&display=swap');
+
 *{
   font-family: 'Barlow', ;
 }
 
 .lazyload,.lazyloading{
   opacity:0!important;
-  
   }
 
 .lazyloaded{
@@ -69,4 +69,6 @@ export default {
 .spacer{
   height: 100px;
 }
+
+
 </style>

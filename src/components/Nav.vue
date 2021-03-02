@@ -69,4 +69,11 @@ export default {
         padding:10px;
         color:#3c6768;
     }
+
+    @media only screen and (max-width: 600px) {
+        #nav-div{
+            padding:10px;
+        }
+    }
+
 </style>
