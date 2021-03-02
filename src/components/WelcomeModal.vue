@@ -113,5 +113,11 @@
   cursor:pointer;
   background-color:rgb(66,123,124);
   
+  
 }
+  @media only screen and (max-width: 600px) {
+    .modal-content {
+      margin-top:50%;
+   }
+  }
 </style>
