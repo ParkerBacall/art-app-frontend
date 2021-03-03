@@ -9,7 +9,7 @@
         :id="user.genre.map(genre => genre.name).includes(gene.name) ? 'selected' : 'artwork'" 
         v-for="gene in genes" 
         :key="gene.id">
-            <img class="lazyload" data-expand="-10" :data-src = "gene._links.thumbnail.href"/>
+            <img class="lazyload" :data-src = "gene._links.thumbnail.href"/>
             <div id="h3-div">
             <h3>
             {{gene.name}}

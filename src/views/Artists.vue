@@ -10,7 +10,7 @@
         :id="user.artists.map(artist => artist.name).includes(artist.name) ? 'selected' : 'artwork' "
         v-for="artist in goodArtists" 
         :key="artist.id">
-            <img class="lazyload" data-expand="-10" v-if='artist._links.thumbnail' :data-src= "artist._links.thumbnail.href"/>
+            <img class="lazyload" v-if='artist._links.thumbnail' :data-src= "artist._links.thumbnail.href"/>
             <div id="h3-div">
             <h3>
             {{artist.name}}

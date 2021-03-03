@@ -4,8 +4,11 @@
         <h1>Explore</h1>
         </div>
        <div id='explore-grid'>
+           <div v-if="exploreArtists.length==0">
+               <p class="empty-message">Try clicking on some artists or genres to add them to your favorites.</p>
+           </div>
        <div id="explore" v-for="artist in exploreArtists" :key=artist.id>
-           <img class="lazyload" data-expand="-10" :data-src="artist._links.thumbnail.href" alt=""/>
+           <img class="lazyload" :data-src="artist._links.thumbnail.href" alt=""/>
           <div id="h3-div">
           <h3>{{artist.name}}</h3>
           </div>
@@ -40,7 +43,7 @@ export default {
     computed: mapGetters(['isLoggedIn', 'user', 'artists', 'exploreArtists', 'similarArtists']),
       created(){
          this.fetchBois()
-        },
+        }
 }
 </script>
 
@@ -54,6 +57,10 @@ export default {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        .empty-message{
+            padding: 10px;
+            text-align: center;
+        }
          #explore{
             width: 20%;
             height: 20%;

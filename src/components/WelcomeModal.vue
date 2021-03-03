@@ -29,8 +29,16 @@
       },
       closeModal(){
         document.querySelector('.welcome-modal').style.display='none'
+      },
+      checkStorage(){
+       if(localStorage.getItem('visited') != 'true')
+        document.querySelector('.welcome-modal').style.display='block'
+        localStorage.setItem('visited', 'true')
       }
-   }
+   },
+    mounted(){
+        this.checkStorage()
+    }
   }
   
 
@@ -38,7 +46,7 @@
 
 <style>
 .welcome-modal {
-  display: block; 
+  display: none; 
   position: fixed; 
   z-index: 1; 
   left: 0;
@@ -54,6 +62,7 @@
     display:flex;
     justify-content: center;
     width:100%;
+
 }
 
 .modal-body-container{
@@ -64,6 +73,7 @@
 
 /* Modal Content/Box */
 .modal-content {
+ 
   background-color: #fefefe;
   margin: 15% auto; 
   padding:20px;

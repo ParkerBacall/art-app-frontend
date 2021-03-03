@@ -1,6 +1,8 @@
 <template>
     <div class="sticky" id="header-div">
+        <a href="/" class="router-link logo">
         <h1 id='main-title'>Artify</h1>
+        </a>
          
         <Nav/>  
         <div class="user-div">   
@@ -28,7 +30,10 @@ export default {
 
 <style lang="scss" >
 
-  
+  .logo{
+      text-decoration: none;
+      color:black!important;
+  }
 
   #hide{
         display: none;
