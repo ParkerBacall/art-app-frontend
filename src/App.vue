@@ -22,8 +22,8 @@ export default {
    
   },
   methods: {
-    ...mapActions(['fetchAndCacheToken', 'getUser', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
-    ...mapMutations(['toggleLogin', 'toggleHideLogin', 'setSelectedGenes']),
+    ...mapActions(['fetchAndCacheToken', 'fetchAllArtists', 'fetchGenes', 'fetchArtists']),
+    ...mapMutations(['setSelectedGenes']),
     },
    computed: mapGetters(['isLoggedIn', 'user', 'hideSignUp']),
     created() {

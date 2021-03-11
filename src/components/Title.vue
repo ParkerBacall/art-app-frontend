@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
 export default {
     name: "Title",
-    computed: mapGetters(['user'])
 }
 </script>
 

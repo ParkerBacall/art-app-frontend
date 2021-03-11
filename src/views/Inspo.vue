@@ -49,7 +49,6 @@ export default {
             padding: 20px;
          
         }
-         
     }
         @media only screen and (max-width: 600px) {
             #artwork-div{

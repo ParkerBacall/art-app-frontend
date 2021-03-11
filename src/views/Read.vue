@@ -32,39 +32,15 @@ export default {
         },
         methods:{
              ...mapActions(['getUser', 'addSelectedGene', 'removeSelectedGene']),
-             ...mapMutations(['addReadData','addGenreArtists','toggleLogin', 'toggleHideLogin']),
-            toggleBaseState(){
-            this.toggleLogin()
-            this.toggleHideLogin()
-            },
+             ...mapMutations(['addReadData','addGenreArtists']),
+          
               handleClick(gene, user){
            if (!user.genre.map(genre => genre.name).includes(gene.name)){
                 this.addSelectedGene(gene)
-                fetch('https://artify-backend.herokuapp.com/artists',{
-                    method: 'POST',
-                    headers:{
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify ({
-                        name: gene.name, 
-                        artworks: gene._links.artworks.href,
-                        artists: gene._links.artists.href,
-                        user_id: user.id
-                        })
-                    })
-                        .then(response => response.json())
-                        // .then(console.log)
+              
            } else{
                this.removeSelectedGene(gene)
-               fetch(`https://artify-backend.herokuapp.com/artists`,{
-                   method: 'DELETE',
-                   headers:{
-                       'content-type': 'application/json'
-                   },
-                   body: JSON.stringify ({name: gene.name, user_id: user.id})
-               })
-               .then(res => res.json())
-            //    .then(console.log)
+              
            }
 
         }

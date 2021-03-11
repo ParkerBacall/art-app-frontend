@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
 import Nav from './Nav'
 export default {
     name: "Header",
@@ -22,9 +21,7 @@ export default {
         Nav,
         
     },
-    methods: mapMutations(["toggleHideLogin", "toggleHideSignUp"]), 
-    computed: mapGetters(['user','hideLogin', 'isLoggedIn', 'hideSignUp']),
-
+   
 }
 </script>
 
