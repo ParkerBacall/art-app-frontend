@@ -8,23 +8,13 @@ if you are interested check out https://developers.artsy.net/
 
 1. This app is deployed!
     1. Navigate to [https://artify-frontend.firebaseapp.com/](https://artify-frontend.firebaseapp.com)
-    1. When the page loads you will be on the login page
-    1. Click the login text in the header and the login menu will open
-    1. From here you can log in or make a new user
-    1. Wether you log in or create a new user you will be logged in as you user and redirect to the genre page
-1. Cloning
-    1. If you want to clone this repo make sure you clone the [backend](https://github.com/ParkerBacall/art_app_backend) also
-    1. Run npm install on the frontend and then run npm run serve to start the server on port 8080
-    1. On the backend youu can run npm start
 
 ### Using Artify 
 
 1. Genres and artists
-    1. Once logged in you can view navigate using the links under the header
-    1. From the genres page you can use the dropdown to increase the number of genres shown
-    1. You can click on the about genre to be routed to a show page about that genre
+    1. From the genres or arists pages you can use the dropdown to increase the number of items shown
+    1. You can click on about genre ort artist to be routed to a show page about that genre /artist
     1. If you click anywhere else on the genre you will add it as a favorite for you user, this will change the content on your explore page, if you click it will be removed from your favorites
-    1. On the artists page you can do all the same thing except for artists instead of genres
    
    ![Screen Shot 2020-03-05 at 2 48 20 PM](https://user-images.githubusercontent.com/17993120/76028891-b597ae00-5ef0-11ea-905b-cb5a81451362.png)
 
@@ -54,5 +44,7 @@ if you are interested check out https://developers.artsy.net/
     
     ![Screen Shot 2020-03-05 at 2 48 45 PM](https://user-images.githubusercontent.com/17993120/76029091-0d361980-5ef1-11ea-9499-3916053fc8ca.png)
 
-Check out this [video](https://youtu.be/QYfIZ3qu4Eo) showing off the functionality the app!
+1. We are always updating functionality to provide a better user experience. Be sure to check back later and see what has changed!
+
+Check out this [video](https://youtu.be/QYfIZ3qu4Eo) showing off the functionality the app (Previous Version)!
     
